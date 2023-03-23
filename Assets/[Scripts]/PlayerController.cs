@@ -11,11 +11,14 @@ public class PlayerController : MonoBehaviour
     public float speed = 10;
     public float rotationSpeed = 600;
     Rigidbody rb;
+    public LayerMask placeableLayer;
+    public GameObject hitObject;
+    public GameObject heldItem;
+    public GameObject heldItemPos;
 
     // Start is called before the first frame update
     private void Awake()
     {
-
         rb = GetComponent<Rigidbody>();
         input = new PlayerInputActions();
         input.Player.Enable();
@@ -23,16 +26,6 @@ public class PlayerController : MonoBehaviour
         input.Player.Movement.canceled += ctx => move = Vector2.zero;
         input.Player.Interact.performed += ctx => Interact();
         input.Player.Pickup.performed += ctx => Pickup();
-    }
-
-    private void Pickup()
-    {
-        throw new NotImplementedException();
-    }
-
-    private void Interact()
-    {
-        throw new NotImplementedException();
     }
 
     void Start()
@@ -43,8 +36,49 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ShootRaycast();
         Move();
         SpeedControl();
+    }
+
+    private void ShootRaycast()
+    {
+        RaycastHit objectHit;
+        Debug.DrawRay(transform.position, transform.forward * 1, Color.green);
+        if (Physics.Raycast(transform.position, transform.forward, out objectHit, 1, placeableLayer))
+        {
+            hitObject = objectHit.collider.gameObject;
+        } else
+        {
+            hitObject = null;
+        }
+    }
+
+    private void Pickup()
+    {
+        if(hitObject)
+        {
+            Placeable placeable = hitObject.GetComponent<Placeable>();
+            if(!placeable.item && heldItem)
+            {
+                placeable.item = heldItem;
+                placeable.item.transform.SetParent(placeable.itemPos.transform);
+                placeable.item.transform.localPosition = Vector3.zero;
+                heldItem = null;
+            } 
+            else if(placeable.item && !heldItem)
+            {
+                placeable.item.transform.SetParent(heldItemPos.transform);
+                heldItem = placeable.item;
+                heldItem.transform.localPosition = Vector3.zero;
+                placeable.item = null;
+            }
+        }
+    }
+
+    private void Interact()
+    {
+        throw new NotImplementedException();
     }
 
     public void Move()
