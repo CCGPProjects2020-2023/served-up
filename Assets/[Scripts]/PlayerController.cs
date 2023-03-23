@@ -49,14 +49,18 @@ public class PlayerController : MonoBehaviour
 
     public void Move()
     {
-        Vector3 moveDir = new Vector3(move.x, 0f, move.y);
-        //Vector3 moveDir = transform.forward * move.y + transform.right * move.x;
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir), 0.5f);
+        if (move != Vector2.zero)
+        {
+            Vector3 moveDir = new Vector3(move.x, 0f, move.y);
+            //Vector3 moveDir = transform.forward * move.y + transform.right * move.x;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir), 0.5f);
+
+
+            //transform.Translate(moveDir * speed * Time.deltaTime, Space.World);
+
+            rb.AddForce(moveDir * speed, ForceMode.Force);
+        }
         
-
-        //transform.Translate(moveDir * speed * Time.deltaTime, Space.World);
-
-        rb.AddForce(moveDir * speed, ForceMode.Force);
     }
 
     private void SpeedControl()
