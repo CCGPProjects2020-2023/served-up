@@ -10,9 +10,11 @@ public class PlayerController : MonoBehaviour
     Vector2 move = Vector2.zero;
     public float speed = 10;
     Rigidbody rb;
+    private Vector2 currentLookDir;
     // Start is called before the first frame update
     private void Awake()
     {
+        currentLookDir = new Vector2(0f,0f);
         rb = GetComponent<Rigidbody>();
         input = new PlayerInputActions();
         input.Player.Enable();
@@ -40,13 +42,20 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         Move();
         SpeedControl();
     }
 
     public void Move()
     {
-        Vector3 moveDir = transform.forward * move.y + transform.right * move.x;
+        Vector3 moveDir = new Vector3(move.x, 0f, move.y);
+        //Vector3 moveDir = transform.forward * move.y + transform.right * move.x;
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir), 0.5f);
+        currentLookDir = new Vector2(0f, transform.rotation.y);
+
+        //transform.Translate(moveDir * speed * Time.deltaTime, Space.World);
+
         rb.AddForce(moveDir * speed, ForceMode.Force);
     }
 
@@ -58,7 +67,7 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 controlVel = vel.normalized * speed;
 
-            rb.velocity = new Vector3(controlVel.x, rb.velocity.y, controlVel.z);
+            rb.velocity = new Vector3(controlVel.x, 0f, controlVel.z);
         }
     }
 }
