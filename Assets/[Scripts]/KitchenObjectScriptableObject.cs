@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu()]
 public class KitchenObjectScriptableObject : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // read-only data 
+    public Transform prefab; 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string objectName;
 }
