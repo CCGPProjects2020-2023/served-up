@@ -127,7 +127,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSO: {fileID: 11400000, guid: 6b419e710bad712448d22ce9d450eed4, type: 2}
-  placePOS: {fileID: 8851819029701824002}
+  itemPOS: {fileID: 8851819029701824002}
+  item: {fileID: 8297001904983644231, guid: ecd75263e5c3e284bbc3ec34f6666139, type: 3}
+  heldItem: {fileID: 0}
 --- !u!1 &8851819029701824002
 GameObject:
   m_ObjectHideFlags: 0

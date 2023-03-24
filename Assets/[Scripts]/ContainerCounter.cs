@@ -11,29 +11,30 @@ public class ContainerCounter : MonoBehaviour
     private ItemSOHolder itemSOHolder;
     private PlayerController playerController;
 
-    [SerializeField] private GameObject placePOS;
+    [SerializeField] private GameObject itemPOS;
+    [SerializeField] public GameObject item;
+    [SerializeField] public GameObject heldItem;
+    Placeable placeable;
+
+
+
 
     private void Start()
     {
         Placeable placeable = GetComponent<Placeable>();
 
-        Transform [] children = GetComponentsInChildren<Transform>();
+      /*  playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
+        playerController.Pickup();
 
+        placeable.itemPos = itemPOS;
 
-        if (placePOS.transform.childCount == 0)
-        {
-            placeable.item = Instantiate(itemSO.prefab, placePOS.transform);
-        }        
+        itemPOS = transform.GetChild(0).gameObject; */        
     }
 
 
-    public void Pickup()
+    public void FindItem()
     {
-       
+        placeable.item = Instantiate(item, itemPOS.transform);
     }
-
-
-
-
 }
