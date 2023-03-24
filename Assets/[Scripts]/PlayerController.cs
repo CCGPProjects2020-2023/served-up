@@ -118,13 +118,26 @@ public class PlayerController : MonoBehaviour
 
     public void Move()
     {
-        Vector3 moveDir = new Vector3(move.x, 0f, move.y);
+        Vector3 forward = Camera.main.transform.forward;
+        Vector3 right = Camera.main.transform.right;
 
-        rb.AddForce(moveDir * speed, ForceMode.Force);
+        forward.y = 0;
+        right.y = 0;
+        forward.Normalize();
+        right.Normalize();
+        Vector3 moveDir = new Vector3(move.x, 0f, move.y );
+
+        Vector3 forwardRelativeVerticalInput = move.y * forward;
+        Vector3 rightRelativeHorizontalInput = move.x * right;
+
+        Vector3 cameraRelativeMovement = forwardRelativeVerticalInput + rightRelativeHorizontalInput;
+
+        rb.AddForce(cameraRelativeMovement * speed, ForceMode.Force);
+
 
         if (move != Vector2.zero)
         {
-            Quaternion toRotation = Quaternion.LookRotation(moveDir, Vector3.up);
+            Quaternion toRotation = Quaternion.LookRotation(cameraRelativeMovement, Vector3.up);
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
