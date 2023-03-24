@@ -80,6 +80,9 @@ public class PlayerController : MonoBehaviour
                 if (outputItem != null)
                 {
                     Debug.Log(outputItem.name);
+                    Destroy(placeable.item);
+                    Destroy(heldItem);
+                    GameObject newItem = Instantiate(outputItem.prefab, placeable.itemPos.transform);
                 }
             }
         }
