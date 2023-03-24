@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bec520f46d6f3c49bd9148405033ffe, type: 3}
+  m_Name: MoonshineBottleItemSO
+  m_EditorClassIdentifier: 
+  name: MoonshineBottle
+  icon: {fileID: 21300000, guid: 956d23e77e5ba614386410861be3331a, type: 3}
+  prefab: {fileID: 102308697767017718, guid: 137882f5f1951ac4fba3f7a2591404cc, type: 3}

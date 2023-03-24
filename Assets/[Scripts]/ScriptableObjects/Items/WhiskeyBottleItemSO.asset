@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bec520f46d6f3c49bd9148405033ffe, type: 3}
+  m_Name: WhiskeyBottleItemSO
+  m_EditorClassIdentifier: 
+  name: WhiskeyBottle
+  icon: {fileID: 21300000, guid: 58284306eeb8f2c499b3b30379e20492, type: 3}
+  prefab: {fileID: 4735263794244674361, guid: 5bf4c8aa08fc096498a849e57d31bbf8, type: 3}
