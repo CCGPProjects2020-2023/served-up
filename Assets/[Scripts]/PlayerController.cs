@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     PlayerInputActions input;
+    RecipeSystem recipeSystem;
     Vector2 move = Vector2.zero;
     public float speed = 10;
     public float rotationSpeed = 600;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
         input.Player.Movement.canceled += ctx => move = Vector2.zero;
         input.Player.Interact.performed += ctx => Interact();
         input.Player.Pickup.performed += ctx => Pickup();
+        recipeSystem = RecipeSystem.Instance;
     }
 
     void Start()
@@ -72,6 +74,13 @@ public class PlayerController : MonoBehaviour
                 heldItem = placeable.item;
                 heldItem.transform.localPosition = Vector3.zero;
                 placeable.item = null;
+            } else
+            {
+                ItemSO outputItem = recipeSystem.GetRecipeOutput(placeable.item.GetComponent<ItemSOHolder>().itemSO, heldItem.GetComponent<ItemSOHolder>().itemSO);
+                if (outputItem != null)
+                {
+                    Debug.Log(outputItem.name);
+                }
             }
         }
     }
