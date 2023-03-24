@@ -15,3 +15,4 @@ MonoBehaviour:
   name: Cup
   icon: {fileID: 21300000, guid: c4d8d25013f45f5459292b6ae6c6ce3b, type: 3}
   prefab: {fileID: 5323482738442007081, guid: ee1ef3f9c5a7fa2489e69169cd48fc41, type: 3}
+  isDestructable: 1

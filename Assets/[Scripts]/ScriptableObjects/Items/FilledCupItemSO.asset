@@ -15,3 +15,4 @@ MonoBehaviour:
   name: FilledCup
   icon: {fileID: 21300000, guid: d9e9b2e451bdd4141a816f6ab986f037, type: 3}
   prefab: {fileID: 414773336319447342, guid: b85139a6e6356dc49842ec1e32131e04, type: 3}
+  isDestructable: 1

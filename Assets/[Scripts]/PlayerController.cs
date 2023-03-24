@@ -76,13 +76,37 @@ public class PlayerController : MonoBehaviour
                 placeable.item = null;
             } else
             {
-                ItemSO outputItem = recipeSystem.GetRecipeOutput(placeable.item.GetComponent<ItemSOHolder>().itemSO, heldItem.GetComponent<ItemSOHolder>().itemSO);
+                ItemSO placeableItemSO = placeable.item.GetComponent<ItemSOHolder>().itemSO;
+                ItemSO heldItemSO = heldItem.GetComponent<ItemSOHolder>().itemSO;
+                ItemSO outputItem = recipeSystem.GetRecipeOutput(placeableItemSO, heldItemSO);
                 if (outputItem != null)
                 {
-                    Debug.Log(outputItem.name);
-                    Destroy(placeable.item);
-                    Destroy(heldItem);
-                    GameObject newItem = Instantiate(outputItem.prefab, placeable.itemPos.transform);
+                    if(placeableItemSO.isDestructable && !heldItemSO.isDestructable)
+                    {
+                        Destroy(placeable.item);
+                        GameObject newItem = Instantiate(outputItem.prefab, new Vector3(0, 0, 0), outputItem.prefab.transform.rotation);
+                        newItem.transform.SetParent(placeable.itemPos.transform);
+                        placeable.item = newItem;
+                        placeable.item.transform.localPosition = Vector3.zero;
+                    } else if(!placeableItemSO.isDestructable && heldItemSO.isDestructable)
+                    {
+                        Destroy(heldItem);
+                        heldItem = null;
+
+                        GameObject newItem = Instantiate(outputItem.prefab, new Vector3(0, 0, 0), outputItem.prefab.transform.rotation);
+                        newItem.transform.SetParent(heldItemPos.transform);
+                        heldItem = newItem;
+                        heldItem.transform.localPosition = Vector3.zero;
+                    } else
+                    {
+                        Destroy(placeable.item);
+                        GameObject newItem = Instantiate(outputItem.prefab, new Vector3(0,0,0), outputItem.prefab.transform.rotation);
+                        newItem.transform.SetParent(placeable.itemPos.transform);
+                        placeable.item = newItem;
+                        placeable.item.transform.localPosition = Vector3.zero;
+                        Destroy(heldItem);
+                        heldItem = null;
+                    }      
                 }
             }
         }

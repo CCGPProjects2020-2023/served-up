@@ -8,4 +8,5 @@ public class ItemSO : ScriptableObject
     public string name;
     public Sprite icon;
     public GameObject prefab;
+    public bool isDestructable;
 }
