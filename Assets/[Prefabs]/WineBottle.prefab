@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5227483239185554139}
   - component: {fileID: 5237505746446637571}
   - component: {fileID: 5195784518423048833}
+  - component: {fileID: 3912014192668451967}
   m_Layer: 0
   m_Name: WineBottle
   m_TagString: Untagged
@@ -98,3 +99,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43074276399318768, guid: 0fb3550af17cdde42baa4e1c6118e97b, type: 2}
+--- !u!114 &3912014192668451967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5257955655130530677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb5852c10479e14ebf7edaec55191ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSO: {fileID: 11400000, guid: 85f1bfa4f53506b44ba37c0090830623, type: 2}

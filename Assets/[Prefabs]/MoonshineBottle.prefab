@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 78992678661062602}
   - component: {fileID: 89636034069076208}
   - component: {fileID: 111506625823483016}
+  - component: {fileID: 978081086907574440}
   m_Layer: 0
   m_Name: MoonshineBottle
   m_TagString: Untagged
@@ -98,3 +99,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43903566839428366, guid: c23fcf1f21e918947be3922eb01dfabe, type: 2}
+--- !u!114 &978081086907574440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102308697767017718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb5852c10479e14ebf7edaec55191ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSO: {fileID: 11400000, guid: 06191194343c1ee4288e9d3683535585, type: 2}
