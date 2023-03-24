@@ -27,12 +27,11 @@ public class PlayerController : MonoBehaviour
         input.Player.Movement.canceled += ctx => move = Vector2.zero;
         input.Player.Interact.performed += ctx => Interact();
         input.Player.Pickup.performed += ctx => Pickup();
-        recipeSystem = RecipeSystem.Instance;
     }
 
     void Start()
     {
-
+        recipeSystem = RecipeSystem.Instance;
     }
 
     // Update is called once per frame
