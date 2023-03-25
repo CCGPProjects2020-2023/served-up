@@ -54,10 +54,16 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(rayPos, orientation.forward * 1, Color.green);
         if (Physics.Raycast(rayPos, orientation.forward, out objectHit, 1, placeableLayer))
         {
-            hitObject = objectHit.collider.gameObject;
+            if(objectHit.collider.gameObject != hitObject)
+            {
+                
+                hitObject = objectHit.collider.gameObject;
+                SetSelectedObject(hitObject);
+            }
         } else
         {
             hitObject = null;
+            SetSelectedObject(hitObject);
         }
     }
 
@@ -151,4 +157,9 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(controlVel.x, 0f, controlVel.z);
         }
     }
+
+    private void SetSelectedObject(GameObject obj)
+    {
+        Events.onObjectSelectedChanged.Invoke(obj);
+    } 
 }

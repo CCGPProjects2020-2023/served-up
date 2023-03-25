@@ -12,6 +12,7 @@ public class Table : Placeable
     void Start()
     {
         itemPos = transform.GetChild(0).gameObject;
+        selectedCounterVisual = transform.GetChild(1).gameObject;
         isEmpty = true;   
     }
     private void Update()
