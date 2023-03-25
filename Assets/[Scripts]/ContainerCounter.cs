@@ -2,39 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ContainerCounter : MonoBehaviour
+public class ContainerCounter : Placeable
 {
     // Start is called before the first frame update
 
-    [SerializeField] private ItemSO itemSO;
+    //  [SerializeField] private ItemSO itemSO;
 
-    private ItemSOHolder itemSOHolder;
-    private PlayerController playerController;
+    //private ItemSOHolder itemSOHolder;
 
-    [SerializeField] private GameObject itemPOS;
-    [SerializeField] public GameObject item;
-    [SerializeField] public GameObject heldItem;
-    Placeable placeable;
+    public GameObject placePOS;
 
+    public GameObject placePOSCHILD;
 
 
 
     private void Start()
     {
-        Placeable placeable = GetComponent<Placeable>();
+        itemPos = transform.GetChild(0).gameObject;
 
-      /*  playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+    }
 
-        playerController.Pickup();
 
-        placeable.itemPos = itemPOS;
+    private void Update()
+    {
+        placePOSCHILD = itemPos.transform.GetChild(0).gameObject;
 
-        itemPOS = transform.GetChild(0).gameObject; */        
+        if (placePOSCHILD != null)
+        {
+           
+        }
+        else
+        {
+            Instantiate(item, placePOS.transform);
+        }
     }
 
 
     public void FindItem()
     {
-        placeable.item = Instantiate(item, itemPOS.transform);
+       // item = Instantiate(item, itemPos.transform);
     }
 }
