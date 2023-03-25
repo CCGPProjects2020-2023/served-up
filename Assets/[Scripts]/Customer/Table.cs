@@ -23,6 +23,8 @@ public class Table : Placeable
             order = null;
             GameObject newItem = Instantiate(emptyCup, new Vector3(0, 0, 0), emptyCup.transform.rotation);
             newItem.transform.SetParent(itemPos.transform);
+            item = newItem;
+            item.transform.localPosition = Vector3.zero;
             Debug.Log("order complete");
             Destroy(customer);
             customer = null;
