@@ -7,7 +7,7 @@ public static class Events
 {
     //public static readonly Evt<GameObject> onRoomHover = new Evt<GameObject>(); 
     //public static readonly Evt onNoRoomHover = new Evt();
-    
+    public static readonly Evt onOrderCompleted = new Evt();
 }
 
 public class Evt

@@ -24,12 +24,21 @@ public class Table : Placeable
             GameObject newItem = Instantiate(emptyCup, new Vector3(0, 0, 0), emptyCup.transform.rotation);
             newItem.transform.SetParent(itemPos.transform);
             Debug.Log("order complete");
+            Destroy(customer);
+            customer = null;
+            
+            Events.onOrderCompleted.Invoke();
+            
         }
     }
     public void TakeOrder()
     {
-        order = OrderManager.Instance.GenerateOrder();
-        Debug.Log(order.name);
+        if (customer)
+        {
+            order = OrderManager.Instance.GenerateOrder();
+            Debug.Log(order.name);
+        }
+        
     }
 
 
