@@ -28,7 +28,11 @@ public class CustomerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //DELETE WHEN WE ADD CUSTOMER SPAWNING!!!!!!!!!!!!!!!!!!!!!!
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            CreateCustomer();
+        }
     }
 
     public void CreateCustomer()
