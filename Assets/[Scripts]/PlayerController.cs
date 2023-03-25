@@ -16,10 +16,14 @@ public class PlayerController : MonoBehaviour
     public GameObject hitObject;
     public GameObject heldItem;
     public GameObject heldItemPos;
+    PlayerLook playerLook;
+    public Transform orientation;
+    private Vector3 moveDir;
 
     // Start is called before the first frame update
     private void Awake()
     {
+        playerLook = GetComponent<PlayerLook>();
         rb = GetComponent<Rigidbody>();
         input = new PlayerInputActions();
         input.Player.Enable();
@@ -40,14 +44,15 @@ public class PlayerController : MonoBehaviour
         ShootRaycast();
         Move();
         SpeedControl();
+        playerLook.Look(input.Player.Look.ReadValue<Vector2>());
     }
 
     private void ShootRaycast()
     {
         RaycastHit objectHit;
         Vector3 rayPos = new Vector3(transform.position.x, transform.position.y - 0.25f, transform.position.z);
-        Debug.DrawRay(rayPos, transform.forward * 1, Color.green);
-        if (Physics.Raycast(rayPos, transform.forward, out objectHit, 1, placeableLayer))
+        Debug.DrawRay(rayPos, orientation.forward * 1, Color.green);
+        if (Physics.Raycast(rayPos, orientation.forward, out objectHit, 1, placeableLayer))
         {
             hitObject = objectHit.collider.gameObject;
         } else
@@ -126,29 +131,13 @@ public class PlayerController : MonoBehaviour
 
     public void Move()
     {
-        Vector3 forward = Camera.main.transform.forward;
-        Vector3 right = Camera.main.transform.right;
 
-        forward.y = 0;
-        right.y = 0;
-        forward.Normalize();
-        right.Normalize();
-        Vector3 moveDir = new Vector3(move.x, 0f, move.y );
+        moveDir = Vector3.zero;
+        moveDir = orientation.forward * move.y + orientation.right * move.x;
+      
+            rb.AddForce(moveDir.normalized * speed, ForceMode.Force);
+        
 
-        Vector3 forwardRelativeVerticalInput = move.y * forward;
-        Vector3 rightRelativeHorizontalInput = move.x * right;
-
-        Vector3 cameraRelativeMovement = forwardRelativeVerticalInput + rightRelativeHorizontalInput;
-
-        rb.AddForce(cameraRelativeMovement * speed, ForceMode.Force);
-
-
-        if (move != Vector2.zero)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(cameraRelativeMovement, Vector3.up);
-
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-        }
     }
 
     private void SpeedControl()
