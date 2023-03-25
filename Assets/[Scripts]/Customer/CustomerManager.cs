@@ -20,7 +20,7 @@ public class CustomerManager : MonoBehaviour
     public static int NrSamples = 500;
     public float Lambda = 12f; // number of arrivals per hour on average
     public float Mu = 20f; // number of customers serviced per hour on average
-    public List<Customer> customers = new();
+    public List<CustomerData> customers = new();
     public List<CustomerMovement> customersScene;
     public List<GameObject> tablesList;
     public GameObject customerPrefab;
@@ -114,7 +114,7 @@ public class CustomerManager : MonoBehaviour
             float arrivalTimeInMin = Utilities.GetExpDistValue(Lambda) * 60f; // 1 / 5 * 60 = 12 (5 is the mean inter-arrival time) 
             //float serviceTimeInMin = Utilities.GetExpDistValue(Mu) * 60f; // 1/ 3 * 60 = 20 (3 is the mean service time)
                                                                           // adds the values to a list of customers - customers have two properties arrivalTime and serviceTime
-            customers.Add(new Customer(arrivalTimeInMin));
+            customers.Add(new CustomerData(arrivalTimeInMin));
             Debug.Log("arrivalTimeInMin: " + arrivalTimeInMin);
             
         }

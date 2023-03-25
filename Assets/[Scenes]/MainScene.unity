@@ -605,9 +605,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 229785217, guid: a1a39f7f58edca24490887243e11ea6c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376175958177513279, guid: a1a39f7f58edca24490887243e11ea6c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563190203385538800, guid: a1a39f7f58edca24490887243e11ea6c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563190203893591198, guid: a1a39f7f58edca24490887243e11ea6c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3917435432051564922, guid: a1a39f7f58edca24490887243e11ea6c, type: 3}
       propertyPath: m_Name
       value: Saloon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289651760272248610, guid: a1a39f7f58edca24490887243e11ea6c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4401800697042320320, guid: a1a39f7f58edca24490887243e11ea6c, type: 3}
       propertyPath: m_RootOrder
@@ -652,6 +672,10 @@ PrefabInstance:
     - target: {fileID: 4401800697042320320, guid: a1a39f7f58edca24490887243e11ea6c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393452508546463567, guid: a1a39f7f58edca24490887243e11ea6c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a39f7f58edca24490887243e11ea6c, type: 3}

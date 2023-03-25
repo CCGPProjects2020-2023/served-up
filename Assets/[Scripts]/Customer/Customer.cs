@@ -2,19 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[SerializeField]
-public class Customer
+public class Customer : MonoBehaviour
 {
-    [SerializeField] private float interarrivalTime;
-
-    public Customer(float interarrivalTime)
+    // Start is called before the first frame update
+    void Start()
     {
-        //this.customerNum = customerNum;
-        this.interarrivalTime = interarrivalTime;
+        
     }
 
-    public float GetInterarrivalTime()
+    // Update is called once per frame
+    void Update()
     {
-        return this.interarrivalTime;
+        
     }
 }

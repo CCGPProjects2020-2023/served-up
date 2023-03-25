@@ -45,8 +45,9 @@ public class PlayerController : MonoBehaviour
     private void ShootRaycast()
     {
         RaycastHit objectHit;
-        Debug.DrawRay(transform.position, transform.forward * 1, Color.green);
-        if (Physics.Raycast(transform.position, transform.forward, out objectHit, 1, placeableLayer))
+        Vector3 rayPos = new Vector3(transform.position.x, transform.position.y - 0.25f, transform.position.z);
+        Debug.DrawRay(rayPos, transform.forward * 1, Color.green);
+        if (Physics.Raycast(rayPos, transform.forward, out objectHit, 1, placeableLayer))
         {
             hitObject = objectHit.collider.gameObject;
         } else
@@ -73,7 +74,7 @@ public class PlayerController : MonoBehaviour
                 heldItem = placeable.item;
                 heldItem.transform.localPosition = Vector3.zero;
                 placeable.item = null;
-            } else
+            } else if (placeable.item && heldItem)
             {
                 ItemSO placeableItemSO = placeable.item.GetComponent<ItemSOHolder>().itemSO;
                 ItemSO heldItemSO = heldItem.GetComponent<ItemSOHolder>().itemSO;
@@ -113,7 +114,14 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
-        throw new NotImplementedException();
+        if(hitObject)
+        {
+            if(hitObject.TryGetComponent(out Table table))
+            {
+                if (table.order == null)
+                    table.TakeOrder();
+            }
+        }
     }
 
     public void Move()
