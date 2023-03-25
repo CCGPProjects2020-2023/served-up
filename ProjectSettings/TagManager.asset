@@ -8,6 +8,7 @@ TagManager:
   - Stove
   - Sink
   - TableList
+  - PlacePOS
   layers:
   - Default
   - TransparentFX
