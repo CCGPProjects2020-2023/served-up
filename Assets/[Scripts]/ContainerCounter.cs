@@ -26,65 +26,18 @@ public class ContainerCounter : Placeable
     {
         itemPos = transform.GetChild(0).gameObject;
 
-        placePOS = transform.gameObject;
+        itemPrefab = item;
 
-        //placePOSTransform = placePOS.transform.gameObject;
+        Debug.Log(item.transform.childCount + "  by " + itemPos.name);
 
     }
 
 
     private void Update()
     {
-       
-       
-        transforms = placePOS.GetComponentsInChildren<Transform>();
-
-
-        foreach (Transform child in transforms)
+        if (itemPos.transform.childCount == 0)
         {
-            if (child != null)
-            {
-                Instantiate(itemPrefab, placePOS.transform);
-                //Destroy(child.gameObject);
-            }
-            else
-            {
-                Instantiate(itemPrefab, placePOS.transform);
-
-                itemPrefab = item;
-            }
-        } 
-
-
-
-
-        /*if (placePOSCHILD == null)
-        {
-            Instantiate(itemPrefab, placePOS.transform);
-
-            itemPrefab = item;
+            Instantiate(item, itemPos.transform);
         }
-        else
-        {
-            // idk
-        } */
-
-       /* placePOSCHILD = itemPos.transform.GetChild(0).gameObject;
-
-        if (placePOSCHILD != null)
-        {
-           
-            
-        }
-        else
-        {
-            Instantiate(item, placePOS.transform);
-        } */
-    }
-
-
-    public void FindItem()
-    {
-       // item = Instantiate(item, itemPos.transform);
     }
 }
