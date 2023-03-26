@@ -54,8 +54,8 @@ public class PlayerController : MonoBehaviour
         RaycastHit objectHit;
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         //Vector3 rayPos = new Vector3(transform.position.x, transform.position.y - 0.25f, transform.position.z);
-        Debug.DrawRay(cam.transform.position, cam.transform.forward * 1, Color.green);
-        if (Physics.Raycast(ray,  out objectHit, 1, placeableLayer))
+        Debug.DrawRay(ray.origin, ray.direction * 2, Color.green);
+        if (Physics.Raycast(ray,  out objectHit, 2, placeableLayer))
         {
             if(objectHit.collider.gameObject != hitObject)
             {
