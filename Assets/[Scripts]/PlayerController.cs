@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
             /*if (hitObject.TryGetComponent(out ContainerCounter container))
             {
                 container.GetItem();
-            } /*
+            } */
         }
     }
 
