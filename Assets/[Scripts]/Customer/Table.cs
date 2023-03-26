@@ -1,46 +1,43 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Table : Placeable
 {
-    public bool isEmpty;
-    public GameObject customer;
-    public ItemSO order;
     public GameObject emptyCup;
     public GameObject customerPos;
-    // Start is called before the first frame update
-    void Awake()
-    {
-        itemPos = transform.GetChild(0).gameObject;
-        selectedCounterVisual = transform.GetChild(1).gameObject;
-        customerPos = transform.GetChild(2).gameObject;
-        isEmpty = true;   
-    }
+    public SpriteRenderer orderImage;
+    public GameObject customer;
+    public ItemSO order;
     private void Update()
     {
         if(item && item.GetComponent<ItemSOHolder>().itemSO == order)
         {
-            Destroy(item);
-            item = null;
-            order = null;
-            GameObject newItem = Instantiate(emptyCup, new Vector3(0, 0, 0), emptyCup.transform.rotation);
-            newItem.transform.SetParent(itemPos.transform);
-            item = newItem;
-            item.transform.localPosition = Vector3.zero;
-            Debug.Log("order complete");
-            Destroy(customer);
-            customer = null;
-            
-            Events.onOrderCompleted.Invoke();
-            
+            OrderComplete();
         }
     }
+    private void OrderComplete()
+    {
+        Destroy(item);
+        item = null;
+        order = null;
+        GameObject newItem = Instantiate(emptyCup, new Vector3(0, 0, 0), emptyCup.transform.rotation);
+        newItem.transform.SetParent(itemPos.transform);
+        item = newItem;
+        item.transform.localPosition = Vector3.zero;
+        Destroy(customer);
+        customer = null;
+        orderImage.sprite = null;
+        Events.onOrderCompleted.Invoke();
+    }
+
     public void TakeOrder()
     {
         if (customer)
         {
             order = OrderManager.Instance.GenerateOrder();
+            orderImage.sprite = order.icon;
             Debug.Log(order.name);
         }
         

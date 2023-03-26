@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CustomerManager : MonoBehaviour
 {
@@ -60,8 +61,9 @@ public class CustomerManager : MonoBehaviour
             if (table.customer == null)
             {
                 table.customer = customer;
-                customer.transform.position = table.customerPos.transform.position;
-                customer.transform.rotation = table.customerPos.transform.rotation;
+                customer.GetComponent<NavMeshAgent>().SetDestination(table.customerPos.transform.position);
+                //customer.transform.position = table.customerPos.transform.position;
+                //customer.transform.rotation = table.customerPos.transform.rotation;
                 return;
             }
         }
@@ -70,7 +72,7 @@ public class CustomerManager : MonoBehaviour
             if (queuePosition.customer == null)
             {
                 queuePosition.customer = customer;
-                customer.transform.position = queuePosition.gameObject.transform.position;
+                customer.GetComponent<NavMeshAgent>().SetDestination(queuePosition.transform.position);
                 break;
             }
         }
@@ -93,8 +95,9 @@ public class CustomerManager : MonoBehaviour
                         {
 
                             table.customer = currentCustomer;
-                            currentCustomer.transform.position = table.customerPos.transform.position;
-                            currentCustomer.transform.rotation = table.customerPos.transform.rotation;
+                            currentCustomer.GetComponent<NavMeshAgent>().SetDestination(table.customerPos.transform.position);
+                            //currentCustomer.transform.position = table.customerPos.transform.position;
+                            //currentCustomer.transform.rotation = table.customerPos.transform.rotation;
                             break;
                         }
 
@@ -103,7 +106,8 @@ public class CustomerManager : MonoBehaviour
                 else
                 {
                     queuePositions[i - 1].customer = currentCustomer;
-                    currentCustomer.transform.position = queuePositions[i - 1].gameObject.transform.position;
+                    currentCustomer.GetComponent<NavMeshAgent>().SetDestination(queuePositions[i - 1].gameObject.transform.position);
+                    //currentCustomer.transform.position = queuePositions[i - 1].gameObject.transform.position;
                 }
             }
             

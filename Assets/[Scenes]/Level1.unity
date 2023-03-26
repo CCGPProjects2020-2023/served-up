@@ -1618,6 +1618,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8396394713986402246, guid: 1087d347674f83f4a907429d8c110dbb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8396394713986402246, guid: 1087d347674f83f4a907429d8c110dbb, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1087d347674f83f4a907429d8c110dbb, type: 3}
 --- !u!114 &250528616 stripped
@@ -13723,6 +13731,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c933db8b77a3dbf41bbfbdf437dfaf8e, type: 3}
+--- !u!1 &1787443894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1787443896}
+  - component: {fileID: 1787443895}
+  m_Layer: 0
+  m_Name: NavMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1787443895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787443894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df27b9289d1e8c4fb82e0df4f4673ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.06666667
+  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 23800000, guid: 29e3b729cf6b0b141a5807265deb9029, type: 2}
+--- !u!4 &1787443896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787443894}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1787627583 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4917692024321908, guid: 6e48720e2686baf4b9170b824aaedf0e, type: 3}
@@ -17714,7 +17783,7 @@ GameObject:
   - component: {fileID: 33996009525904882}
   - component: {fileID: 23764972823806642}
   - component: {fileID: 64878634882674316}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Road_Straight_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17733,7 +17802,7 @@ GameObject:
   - component: {fileID: 33996009259911997}
   - component: {fileID: 23764971484073085}
   - component: {fileID: 64878634075480131}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Road_Straight_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17771,7 +17840,7 @@ GameObject:
   - component: {fileID: 33996008710520154}
   - component: {fileID: 23764972000033306}
   - component: {fileID: 64878633526466084}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Road_Straight_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21703,7 +21772,7 @@ GameObject:
   - component: {fileID: 33967082771615858}
   - component: {fileID: 23845979813341656}
   - component: {fileID: 64383979219186978}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Road_Patch_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33824,7 +33893,7 @@ GameObject:
   - component: {fileID: 33855486344887106}
   - component: {fileID: 23904022054886030}
   - component: {fileID: 64739853048913762}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Env_Sand_Ground_06 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126237,7 +126306,7 @@ GameObject:
   - component: {fileID: 7006401498937315222}
   - component: {fileID: 3886983027345778512}
   - component: {fileID: 734830497260427808}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Bld_Saloon_RoomDoor_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126386,7 +126455,7 @@ GameObject:
   - component: {fileID: 3478277193645245403}
   - component: {fileID: 1702824533456697105}
   - component: {fileID: 3478277193645245404}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Saloon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126488,7 +126557,7 @@ GameObject:
   - component: {fileID: 5782769987252870434}
   - component: {fileID: 527960727364992594}
   - component: {fileID: 7996734428344627124}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Bld_Saloon_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126758,7 +126827,7 @@ GameObject:
   - component: {fileID: 4677019632244890103}
   - component: {fileID: 5737780205062479304}
   - component: {fileID: 9187558754740619520}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Bld_Saloon_RoomDoor_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127507,7 +127576,7 @@ GameObject:
   - component: {fileID: 519448647963179667}
   - component: {fileID: 6283610704134141134}
   - component: {fileID: 4130476527746319712}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Bld_Saloon_UpstairsDoor_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127540,7 +127609,7 @@ GameObject:
   - component: {fileID: 1314592094831938570}
   - component: {fileID: 3173518379607362441}
   - component: {fileID: 3318552904134577386}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Bld_Saloon_UpstairsDoor_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128150,7 +128219,7 @@ GameObject:
   - component: {fileID: 1708488920559088757}
   - component: {fileID: 2594297687276623344}
   - component: {fileID: 4989467952563085983}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Bld_Saloon_RoomDoor_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
