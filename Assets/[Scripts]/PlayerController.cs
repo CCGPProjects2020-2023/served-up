@@ -136,10 +136,10 @@ public class PlayerController : MonoBehaviour
                     table.TakeOrder();
             }
 
-            if (hitObject.TryGetComponent(out ContainerCounter container))
+            /*if (hitObject.TryGetComponent(out ContainerCounter container))
             {
                 container.GetItem();
-            }
+            } /*
         }
     }
 
