@@ -136,6 +136,7 @@ MonoBehaviour:
   customer: {fileID: 0}
   order: {fileID: 0}
   emptyCup: {fileID: 5323482738442007081, guid: ee1ef3f9c5a7fa2489e69169cd48fc41, type: 3}
+  customerPos: {fileID: 0}
 --- !u!1 &1692713681187058546
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6120251671826291694}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.4222975, y: 1, z: 0.042564392}
+  m_LocalPosition: {x: -1.4222975, y: 0, z: 0.042564392}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

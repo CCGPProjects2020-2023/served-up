@@ -5417,7 +5417,7 @@ MonoBehaviour:
   - {fileID: 250528616}
   - {fileID: 610071321}
   - {fileID: 1684001873}
-  customerPrefab: {fileID: 6661684678790766674, guid: 84af26207f07da7488fb29017c6d4d00, type: 3}
+  customerPrefab: {fileID: 3095740330005728847, guid: 84af26207f07da7488fb29017c6d4d00, type: 3}
   customersInScene: []
   numCustomers: 0
 --- !u!4 &717849795
@@ -9882,7 +9882,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355783678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
