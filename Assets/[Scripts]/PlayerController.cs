@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    private Camera cam;
     PlayerInputActions input;
     RecipeSystem recipeSystem;
     Vector2 move = Vector2.zero;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        cam = GetComponent<PlayerLook>().camera;
         playerLook = GetComponent<PlayerLook>();
         rb = GetComponent<Rigidbody>();
         input = new PlayerInputActions();
@@ -50,9 +52,10 @@ public class PlayerController : MonoBehaviour
     private void ShootRaycast()
     {
         RaycastHit objectHit;
-        Vector3 rayPos = new Vector3(transform.position.x, transform.position.y - 0.25f, transform.position.z);
-        Debug.DrawRay(rayPos, orientation.forward * 1, Color.green);
-        if (Physics.Raycast(rayPos, orientation.forward, out objectHit, 1, placeableLayer))
+        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
+        //Vector3 rayPos = new Vector3(transform.position.x, transform.position.y - 0.25f, transform.position.z);
+        Debug.DrawRay(cam.transform.position, cam.transform.forward * 1, Color.green);
+        if (Physics.Raycast(ray,  out objectHit, 1, placeableLayer))
         {
             if(objectHit.collider.gameObject != hitObject)
             {
