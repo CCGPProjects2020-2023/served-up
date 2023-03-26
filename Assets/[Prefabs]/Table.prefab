@@ -134,7 +134,7 @@ MonoBehaviour:
   isEmpty: 0
   customer: {fileID: 0}
   order: {fileID: 0}
-  emptyCup: {fileID: 0}
+  emptyCup: {fileID: 5323482738442007081, guid: ee1ef3f9c5a7fa2489e69169cd48fc41, type: 3}
 --- !u!1 &1692713681187058546
 GameObject:
   m_ObjectHideFlags: 0
