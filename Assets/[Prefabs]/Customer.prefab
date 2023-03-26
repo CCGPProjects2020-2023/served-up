@@ -2517,6 +2517,7 @@ GameObject:
   - component: {fileID: 3145417660852535191}
   - component: {fileID: 3145417660852535176}
   - component: {fileID: 1794419588479782841}
+  - component: {fileID: 7739294165618748696}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Customer
@@ -2609,3 +2610,17 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7739294165618748696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3095740330005728847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fabd2e3da0f3d874b848083bfc95fa52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  anim: {fileID: 0}

@@ -16,7 +16,11 @@ public class ContainerCounter : Placeable
 
     public GameObject placePOSTransform;
 
-    public GameObject itemPrefab; 
+    public GameObject itemPrefab;
+
+    PlayerController player;
+
+
 
     Transform[] transforms;
 
@@ -26,18 +30,24 @@ public class ContainerCounter : Placeable
     {
         itemPos = transform.GetChild(0).gameObject;
 
-        itemPrefab = item;
-
-        Debug.Log(item.transform.childCount + "  by " + itemPos.name);
-
+        PlayerController player = GetComponent<PlayerController>();
     }
 
 
     private void Update()
     {
-        if (itemPos.transform.childCount == 0)
+       /* if (itemPos.transform.childCount == 0)
+        {
+            Instantiate(item, itemPos.transform);
+        } */
+    }
+
+    public void GetItem()
+    {
+        if (player.heldItemPos == null)
         {
             Instantiate(item, itemPos.transform);
         }
     }
+
 }

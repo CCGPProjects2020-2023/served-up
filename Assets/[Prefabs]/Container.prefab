@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8935947154574479872}
   - component: {fileID: 3762117632965420509}
   - component: {fileID: 1261097513}
-  - component: {fileID: 1461591835}
   m_Layer: 3
   m_Name: Container
   m_TagString: Counter
@@ -113,23 +112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPos: {fileID: 0}
-  item: {fileID: 8297001904983644231, guid: ecd75263e5c3e284bbc3ec34f6666139, type: 3}
---- !u!114 &1461591835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2053013723089268100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c40c3b2965eb67b4a8d5066ad66fdfc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemSO: {fileID: 11400000, guid: 6b419e710bad712448d22ce9d450eed4, type: 2}
-  itemPOS: {fileID: 8851819029701824002}
   item: {fileID: 0}
-  heldItem: {fileID: 0}
+  selectedCounterVisual: {fileID: 0}
 --- !u!1 &8851819029701824002
 GameObject:
   m_ObjectHideFlags: 0
