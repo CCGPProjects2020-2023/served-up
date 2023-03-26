@@ -8,17 +8,24 @@ public class CustomerManager : MonoBehaviour
     public List<QueuePosition> queuePositions;
     public List<Table> tables;
     public GameObject customerPrefab;
-    public List<GameObject> customersInScene; 
+    public List<GameObject> customersInScene;
+    public int numCustomers;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        for (int i = 0; i < 5; i++)
+        {
+            CreateCustomer();
+        }
+
     }
 
     private void OnEnable()
     {
         Events.onOrderCompleted.AddListener(OnOrderCompleted);
+        
     }
     private void OnDisable()
     {
@@ -32,6 +39,11 @@ public class CustomerManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
             CreateCustomer();
+        }
+        numCustomers = GameObject.FindGameObjectsWithTag("Customer").Length;
+        if (numCustomers <= 0)
+        {
+            Events.onGameWon.Invoke();
         }
     }
 
@@ -48,7 +60,8 @@ public class CustomerManager : MonoBehaviour
             if (table.customer == null)
             {
                 table.customer = customer;
-                customer.transform.position = table.transform.position;
+                customer.transform.position = table.customerPos.transform.position;
+                customer.transform.rotation = table.customerPos.transform.rotation;
                 return;
             }
         }
@@ -80,7 +93,8 @@ public class CustomerManager : MonoBehaviour
                         {
 
                             table.customer = currentCustomer;
-                            currentCustomer.transform.position = table.transform.position;
+                            currentCustomer.transform.position = table.customerPos.transform.position;
+                            currentCustomer.transform.rotation = table.customerPos.transform.rotation;
                             break;
                         }
 

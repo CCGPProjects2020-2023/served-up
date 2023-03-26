@@ -8,11 +8,13 @@ public class Table : Placeable
     public GameObject customer;
     public ItemSO order;
     public GameObject emptyCup;
+    public GameObject customerPos;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         itemPos = transform.GetChild(0).gameObject;
         selectedCounterVisual = transform.GetChild(1).gameObject;
+        customerPos = transform.GetChild(2).gameObject;
         isEmpty = true;   
     }
     private void Update()

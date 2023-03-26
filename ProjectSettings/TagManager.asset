@@ -9,6 +9,7 @@ TagManager:
   - Sink
   - TableList
   - PlacePOS
+  - Customer
   layers:
   - Default
   - TransparentFX
