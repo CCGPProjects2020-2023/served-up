@@ -422,7 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ba3c3fe79255e44091c69aae0e9d921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 18
   rotationSpeed: 900
   placeableLayer:
     serializedVersion: 2

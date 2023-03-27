@@ -44,9 +44,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         ShootRaycast();
+        playerLook.Look(input.Player.Look.ReadValue<Vector2>());
+    }
+
+    private void FixedUpdate()
+    {
         Move();
         SpeedControl();
-        playerLook.Look(input.Player.Look.ReadValue<Vector2>());
     }
 
     private void ShootRaycast()
@@ -160,7 +164,7 @@ public class PlayerController : MonoBehaviour
         moveDir = Vector3.zero;
         moveDir = orientation.forward * move.y + orientation.right * move.x;
       
-            rb.AddForce(moveDir.normalized * speed, ForceMode.Force);
+            rb.AddForce(moveDir.normalized * speed * 100f* Time.fixedDeltaTime, ForceMode.Force);
         
 
     }
