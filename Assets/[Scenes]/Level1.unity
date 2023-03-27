@@ -130238,7 +130238,7 @@ GameObject:
   - component: {fileID: 9017208429755323032}
   m_Layer: 3
   m_Name: ShelfModel
-  m_TagString: Customer
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
