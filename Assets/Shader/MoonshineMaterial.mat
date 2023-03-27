@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LiquidMaterial
+  m_Name: MoonshineMaterial
   m_Shader: {fileID: -6465566751694194690, guid: aa7a7b45e407b8340bad7fff3bcf8f2d, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -54,6 +54,6 @@ Material:
     - _WobbleZ: 0
     m_Colors:
     - _Color: {r: 0.033018887, g: 0.26490623, b: 1, a: 1}
-    - _SideColor: {r: 0.9490196, g: 0.5568628, b: 0.10980392, a: 1}
-    - _TopColor: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
+    - _SideColor: {r: 0.24959952, g: 0.745283, b: 0.7281905, a: 1}
+    - _TopColor: {r: 0.08018869, g: 0.8998224, b: 1, a: 1}
   m_BuildTextureStacks: []

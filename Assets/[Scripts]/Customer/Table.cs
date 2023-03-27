@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Table : Placeable
 {
@@ -36,13 +37,32 @@ public class Table : Placeable
     {
         if (customer)
         {
-            order = OrderManager.Instance.GenerateOrder();
-            orderImage.sprite = order.icon;
-            Debug.Log(order.name);
+            if(CustomerIsAtTable())
+            {
+                order = OrderManager.Instance.GenerateOrder();
+                orderImage.sprite = order.icon;
+                Debug.Log(order.name);
+            }
         }
         
     }
 
+    public bool CustomerIsAtTable()
+    {
+        NavMeshAgent agent = customer.GetComponent<NavMeshAgent>();
+        float dist = agent.remainingDistance;
 
-    
+        if (!agent.pathPending)
+        {
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }

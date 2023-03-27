@@ -18,7 +18,7 @@ public class CustomerAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (agent.velocity.magnitude > 0.05)
+        if (agent.velocity.magnitude > 0.15)
         {
             anim.SetBool("isWalking", true);
         }
