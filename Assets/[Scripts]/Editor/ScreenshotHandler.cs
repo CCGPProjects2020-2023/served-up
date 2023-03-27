@@ -1,10 +1,9 @@
+#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace TJ
-{
     public enum ImageFilterMode {
         Nearest = 0,
         Bilinear = 1,
@@ -170,4 +169,4 @@ public class ScreenshotHandler : MonoBehaviour
         return newTexture;
 }
 }
-}
+#endif

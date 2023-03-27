@@ -1,10 +1,10 @@
+#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace TJ
-{
+
 public class IngredientScreenShotGen : MonoBehaviour
 {
 	public GameObject[] objsToScreenshot;
@@ -60,4 +60,4 @@ public class IngredientScreenShotGen : MonoBehaviour
         return "Assets/Icons/" + currentObj.name;
     }
 }
-}
+#endif
