@@ -135,11 +135,22 @@ public class PlayerController : MonoBehaviour
                 if (table.order == null)
                     table.TakeOrder();
             }
+            Placeable placeable = hitObject.GetComponent<Placeable>();
 
-            /*if (hitObject.TryGetComponent(out ContainerCounter container))
+            if (hitObject.TryGetComponent(out ContainerCounter container))
             {
-                container.GetItem();
-            } */
+                if (!heldItem)
+                {
+                    Debug.Log("is this not working?");
+
+                    container.item.transform.position = placeable.item.transform.position;
+
+                    Instantiate(placeable.item, heldItemPos.transform);
+                    placeable.item = heldItem;
+
+
+                }
+            } 
         }
     }
 

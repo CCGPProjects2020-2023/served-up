@@ -9,21 +9,7 @@ public class ContainerCounter : Placeable
     //  [SerializeField] private ItemSO itemSO;
 
     //private ItemSOHolder itemSOHolder;
-
-    public GameObject placePOS;
-
-    public GameObject placePOSCHILD;
-
-    public GameObject placePOSTransform;
-
-    public GameObject itemPrefab;
-
     PlayerController player;
-
-
-
-    Transform[] transforms;
-
 
 
     private void Start()
@@ -44,9 +30,9 @@ public class ContainerCounter : Placeable
 
     public void GetItem()
     {
-        if (player.heldItemPos == null)
+        if (player.heldItem == null)
         {
-            Instantiate(item, itemPos.transform);
+            Instantiate(item, player.heldItemPos.transform);
         }
     }
 
