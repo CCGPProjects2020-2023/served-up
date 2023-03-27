@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BeerItemSO
   m_EditorClassIdentifier: 
   name: Beer
-  icon: {fileID: 21300000, guid: d9e9b2e451bdd4141a816f6ab986f037, type: 3}
+  icon: {fileID: 21300000, guid: c1004d0d10972c04bb083fb773602ddd, type: 3}
   prefab: {fileID: 7411608472827437335, guid: 27ce97542617cc24f92f9576a33c9b0b, type: 3}
   isDestructable: 1

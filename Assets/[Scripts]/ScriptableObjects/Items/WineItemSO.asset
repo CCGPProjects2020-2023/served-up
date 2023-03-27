@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: WineItemSO
   m_EditorClassIdentifier: 
   name: Wine
-  icon: {fileID: 21300000, guid: d9e9b2e451bdd4141a816f6ab986f037, type: 3}
+  icon: {fileID: 21300000, guid: 22645a1a0d10fdf4ab1e27bae4c93422, type: 3}
   prefab: {fileID: 3061498787482331739, guid: a5ce4e529fe94d84db4dfebeec841cbc, type: 3}
   isDestructable: 1

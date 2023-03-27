@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GinItemSO
   m_EditorClassIdentifier: 
   name: Gin
-  icon: {fileID: 21300000, guid: d9e9b2e451bdd4141a816f6ab986f037, type: 3}
+  icon: {fileID: 21300000, guid: 7b8f507899de8114ca84cd47499bf47f, type: 3}
   prefab: {fileID: 3239336120678048308, guid: 66643aaf2529c9e41afa3b10e0ba3563, type: 3}
   isDestructable: 1
