@@ -27,7 +27,7 @@ public class Table : Placeable
         newItem.transform.SetParent(itemPos.transform);
         item = newItem;
         item.transform.localPosition = Vector3.zero;
-        Destroy(customer);
+        customer.GetComponent<CustomerAnimation>().LeaveTable();
         customer = null;
         orderImage.sprite = null;
         Events.onOrderCompleted.Invoke();
@@ -37,7 +37,7 @@ public class Table : Placeable
     {
         if (customer)
         {
-            if(CustomerIsAtTable())
+            if(customer.GetComponent<CustomerAnimation>().isCustomerAtTable)
             {
                 order = OrderManager.Instance.GenerateOrder();
                 orderImage.sprite = order.icon;
@@ -47,22 +47,5 @@ public class Table : Placeable
         
     }
 
-    public bool CustomerIsAtTable()
-    {
-        NavMeshAgent agent = customer.GetComponent<NavMeshAgent>();
-        float dist = agent.remainingDistance;
-
-        if (!agent.pathPending)
-        {
-            if (agent.remainingDistance <= agent.stoppingDistance)
-            {
-                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
 
 }
