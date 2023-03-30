@@ -17,7 +17,7 @@ public class RecipeSystem : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
     }
-    public RecipeSO[] recipes;
+    public List<RecipeSO> recipes;
     public ItemSO GetRecipeOutput(ItemSO item1, ItemSO item2)
     {
         foreach(RecipeSO recipe in recipes)
@@ -31,5 +31,10 @@ public class RecipeSystem : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void AddRecipe(RecipeSO recipe)
+    {
+        recipes.Add(recipe);
     }
 }

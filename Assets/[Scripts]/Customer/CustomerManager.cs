@@ -10,37 +10,39 @@ public class CustomerManager : MonoBehaviour
     public List<Table> tables;
     public GameObject customerPrefab;
     public List<GameObject> customersInScene;
-    public int numCustomers;
+  
 
     // Start is called before the first frame update
     void Start()
     {
 
-        for (int i = 0; i < 5; i++)
+    }
+    private void OnDayStarted()
+    {
+        for (int i = 0; i < GameManager.Instance.currentCustomers; i++)
         {
             CreateCustomer();
         }
-
     }
 
     private void OnEnable()
     {
         Events.onOrderCompleted.AddListener(OnOrderCompleted);
+        Events.onDayStarted.AddListener(OnDayStarted);
         
     }
+
     private void OnDisable()
     {
         Events.onOrderCompleted.RemoveListener(OnOrderCompleted);
+        Events.onDayStarted.RemoveListener(OnDayStarted);
     }
 
-    // Update is called once per frame
-    void Update()
+    void CheckCustomerAmount()
     {
-        
-        numCustomers = GameObject.FindGameObjectsWithTag("Customer").Length;
-        if (numCustomers <= 0)
+        if (GameObject.FindGameObjectsWithTag("Customer").Length <= 0)
         {
-            Events.onGameWon.Invoke();
+            Events.onDayCompleted.Invoke();
         }
     }
 
@@ -75,6 +77,7 @@ public class CustomerManager : MonoBehaviour
     }
     private void OnOrderCompleted()
     {
+        CheckCustomerAmount();
         GameObject currentCustomer;
         for(int i= 0; i < queuePositions.Count; i++)
         {
