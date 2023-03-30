@@ -2624,3 +2624,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   anim: {fileID: 0}
+  isCustomerAtTable: 0
+  isLeaving: 0
+  isInQueue: 0

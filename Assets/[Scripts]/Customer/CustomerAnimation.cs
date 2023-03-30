@@ -50,8 +50,6 @@ public class CustomerAnimation : MonoBehaviour
             {
                 Debug.Log("SITYTING");
                 anim.SetTrigger("TrSit");
-                yield return new WaitForSeconds(this.anim.GetCurrentAnimatorClipInfo(0).Length);
-                anim.SetBool("IsSitting", true);
                 yield break;
             }
             yield return new WaitForEndOfFrame();
@@ -78,6 +76,19 @@ public class CustomerAnimation : MonoBehaviour
 
     public void LeaveTable()
     {
+       
         isCustomerAtTable = false;
+        anim.SetBool("IsSitting", false);
+        anim.SetTrigger("TrStand");
+    }
+
+    public void SitAnimationFinished()
+    {
+        anim.SetBool("IsSitting", true);
+    }
+
+    public void StandAnimationFinished()
+    {
+        //set destination to leave
     }
 }
