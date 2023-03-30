@@ -9,18 +9,21 @@ public class CustomerAnimation : MonoBehaviour
     public Animator anim;
     public bool isCustomerAtTable;
     public bool isLeaving;
+    private bool isInSittingCoroutine;
+    public bool isInQueue;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = this.gameObject.GetComponent<NavMeshAgent>();
         anim = this.gameObject.GetComponent<Animator>();
+        StartCoroutine(SittingDown());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isLeaving)
+        if(!isLeaving)
         {
             isCustomerAtTable = CustomerIsAtTable();
         }
@@ -33,9 +36,25 @@ public class CustomerAnimation : MonoBehaviour
             anim.SetBool("isWalking", false);
         }
 
-        if(isCustomerAtTable)
+        
+            
+        
+        
+    }
+
+    IEnumerator SittingDown()
+    {
+        while (true)
         {
-            //start sitting
+            if (isCustomerAtTable)
+            {
+                Debug.Log("SITYTING");
+                anim.SetTrigger("TrSit");
+                yield return new WaitForSeconds(this.anim.GetCurrentAnimatorClipInfo(0).Length);
+                anim.SetBool("IsSitting", true);
+                yield break;
+            }
+            yield return new WaitForEndOfFrame();
         }
         
     }
@@ -44,7 +63,7 @@ public class CustomerAnimation : MonoBehaviour
     {
         float dist = agent.remainingDistance;
 
-        if (!agent.pathPending)
+        if (!agent.pathPending && !isInQueue)
         {
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
