@@ -11,6 +11,7 @@ public class CustomerAnimation : MonoBehaviour
     public bool isLeaving;
     private bool isInSittingCoroutine;
     public bool isInQueue;
+    public GameObject walkAwayPos;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class CustomerAnimation : MonoBehaviour
         agent = this.gameObject.GetComponent<NavMeshAgent>();
         anim = this.gameObject.GetComponent<Animator>();
         StartCoroutine(SittingDown());
+        walkAwayPos = FindObjectOfType<WalkAwayPos>().gameObject;
     }
 
     // Update is called once per frame
@@ -90,5 +92,14 @@ public class CustomerAnimation : MonoBehaviour
     public void StandAnimationFinished()
     {
         //set destination to leave
+        anim.SetTrigger("TrIdle");
+        agent.SetDestination(walkAwayPos.transform.position);
+        StartCoroutine(DestoryCustomer());
+    }
+
+    IEnumerator DestoryCustomer()
+    {
+        yield return new WaitForSeconds(8);
+        Destroy(this.gameObject);
     }
 }
