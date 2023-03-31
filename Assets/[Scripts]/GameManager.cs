@@ -25,10 +25,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        startingCustomers = 4;
-        currentCustomers = startingCustomers;
         startingDay = 1;
         currentDay = startingDay;
+        currentCustomers = CalculateCustomerAmount();
         Events.onDayStarted.Invoke();
     }
 
@@ -41,9 +40,14 @@ public class GameManager : MonoBehaviour
     public void StartNewDay()
     {
         currentDay++;
+        currentCustomers = CalculateCustomerAmount();
         Events.onDayStarted.Invoke();
     }
 
+    private int CalculateCustomerAmount()
+    {
+        return Mathf.RoundToInt(0.0291f * Mathf.Pow(currentDay, 2) + 0.6917f * currentDay + 2.4615f);
+    }
     private void OnEnable()
     {
         Events.onDayCompleted.AddListener(OnDayCompleted);
