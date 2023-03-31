@@ -15,7 +15,7 @@ public class CustomerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
     private void OnDayStarted()
     {
@@ -23,6 +23,7 @@ public class CustomerManager : MonoBehaviour
         {
             CreateCustomer();
         }
+        StartCoroutine(CheckCustomerAmount());
     }
 
     private void OnEnable()
@@ -38,13 +39,20 @@ public class CustomerManager : MonoBehaviour
         Events.onDayStarted.RemoveListener(OnDayStarted);
     }
 
-    void CheckCustomerAmount()
+    IEnumerator CheckCustomerAmount()
     {
-        if (GameObject.FindGameObjectsWithTag("Customer").Length <= 0)
+        while(true)
         {
-            Events.onDayCompleted.Invoke();
+            if (GameObject.FindGameObjectsWithTag("Customer").Length <= 0)
+            {
+                Events.onDayCompleted.Invoke();
+                yield break;
+            }
+            yield return new WaitForEndOfFrame();
         }
+        
     }
+
 
     public void CreateCustomer()
     {
@@ -79,7 +87,6 @@ public class CustomerManager : MonoBehaviour
     }
     private void OnOrderCompleted()
     {
-        CheckCustomerAmount();
         GameObject currentCustomer;
         for(int i= 0; i < queuePositions.Count; i++)
         {
