@@ -2627,3 +2627,6 @@ MonoBehaviour:
   isCustomerAtTable: 0
   isLeaving: 0
   isInQueue: 0
+  walkAwayPos: {fileID: 0}
+  table: {fileID: 0}
+  rotationSpeed: 5

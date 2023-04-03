@@ -13,6 +13,8 @@ public class CustomerAnimation : MonoBehaviour
     public bool isInQueue;
     public GameObject walkAwayPos;
     public Table table;
+    public float rotationSpeed = 10f;
+    private bool rotateToTable = false;
 
     // Start is called before the first frame update
     void Start()
@@ -51,13 +53,33 @@ public class CustomerAnimation : MonoBehaviour
         {
             if (isCustomerAtTable)
             {
+                StartCoroutine(RotateCustomer(table.gameObject.transform.GetChild(0)));
+                //RotateTowards(table.gameObject.transform.GetChild(0));
+                //this.transform.LookAt(table.gameObject.transform.GetChild(0));
                 Debug.Log("SITYTING");
                 anim.SetTrigger("TrSit");
                 yield break;
             }
+            //Debug.Log("yeild reutrn");
             yield return new WaitForEndOfFrame();
         }
         
+    }
+
+    IEnumerator RotateCustomer(Transform target)
+    {
+        while (true)
+        {
+            if (isCustomerAtTable)
+            {
+                Vector3 direction = (target.position - transform.position).normalized;
+                Quaternion lookRotation = Quaternion.LookRotation(direction);
+                this.gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+            }
+            //Debug.Log("yeild reutrn");
+            yield return new WaitForEndOfFrame();
+        }
+
     }
 
     public bool CustomerIsAtTable()
@@ -79,7 +101,7 @@ public class CustomerAnimation : MonoBehaviour
 
     public void LeaveTable()
     {
-       
+        rotateToTable = false;
         isCustomerAtTable = false;
         anim.SetBool("IsSitting", false);
         anim.SetTrigger("TrStand");
@@ -96,6 +118,7 @@ public class CustomerAnimation : MonoBehaviour
         anim.SetTrigger("TrIdle");
         agent.SetDestination(walkAwayPos.transform.position);
         StartCoroutine(DestoryCustomer());
+        
     }
 
     IEnumerator DestoryCustomer()
@@ -103,4 +126,6 @@ public class CustomerAnimation : MonoBehaviour
         yield return new WaitForSeconds(8);
         Destroy(this.gameObject);
     }
+
+   
 }
