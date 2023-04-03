@@ -10,5 +10,4 @@ public class KitchenObject : MonoBehaviour
     {
         return kitchenScriptableObject;
     }
-
 }

@@ -12,6 +12,7 @@ public class CustomerAnimation : MonoBehaviour
     private bool isInSittingCoroutine;
     public bool isInQueue;
     public GameObject walkAwayPos;
+    public Table table;
 
     // Start is called before the first frame update
     void Start()

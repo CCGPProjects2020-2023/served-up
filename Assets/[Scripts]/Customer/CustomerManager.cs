@@ -67,6 +67,7 @@ public class CustomerManager : MonoBehaviour
             if (table.customer == null)
             {
                 table.customer = customer;
+                customer.GetComponent<CustomerAnimation>().table = table;
                 customer.GetComponent<CustomerAnimation>().isInQueue = false;
                 customer.GetComponent<NavMeshAgent>().SetDestination(table.customerPos.transform.position);
                 //customer.transform.position = table.customerPos.transform.position;
@@ -103,10 +104,9 @@ public class CustomerManager : MonoBehaviour
                         {
                             
                             table.customer = currentCustomer;
+                            currentCustomer.GetComponent<CustomerAnimation>().table = table;
                             currentCustomer.GetComponent<CustomerAnimation>().isInQueue = false;
                             currentCustomer.GetComponent<NavMeshAgent>().SetDestination(table.customerPos.transform.position);
-                            //currentCustomer.transform.position = table.customerPos.transform.position;
-                            //currentCustomer.transform.rotation = table.customerPos.transform.rotation;
                             break;
                         }
 
@@ -117,7 +117,6 @@ public class CustomerManager : MonoBehaviour
                     queuePositions[i - 1].customer = currentCustomer;
                     currentCustomer.GetComponent<CustomerAnimation>().isInQueue = true;
                     currentCustomer.GetComponent<NavMeshAgent>().SetDestination(queuePositions[i - 1].gameObject.transform.position);
-                    //currentCustomer.transform.position = queuePositions[i - 1].gameObject.transform.position;
                 }
             }
             
