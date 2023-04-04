@@ -30,7 +30,7 @@ public class Table : Placeable
             item = null;
             StopAllCoroutines();
             currentState = TableState.Eating;
-            StartCoroutine(Timer(GameManager.Instance.eatingTime, EatingComplete));
+            customer.GetComponent<CustomerAnimation>().StartDrinkingAnim();
         }
     }
     private void OrderComplete()
@@ -77,7 +77,7 @@ public class Table : Placeable
             StartCoroutine(Timer(GameManager.Instance.thinkingTime, ThinkingComplete));
         }
     }
-    IEnumerator Timer(float time, Action actionToBeExecuted)
+    public IEnumerator Timer(float time, Action actionToBeExecuted)
     {
         currentTimer = time;
         timer = currentTimer;
@@ -95,7 +95,7 @@ public class Table : Placeable
         }
     }
 
-    private void EatingComplete()
+    public void DrinkingComplete()
     {
         Debug.Log("Eating Complete");
         OrderComplete();

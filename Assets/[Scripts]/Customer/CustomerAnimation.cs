@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEditor.Progress;
 
 public class CustomerAnimation : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class CustomerAnimation : MonoBehaviour
     public Table table;
     public float rotationSpeed = 10f;
     private bool rotateToTable = false;
+    public GameObject rightHandPos;
 
     // Start is called before the first frame update
     void Start()
@@ -95,13 +97,13 @@ public class CustomerAnimation : MonoBehaviour
     {
         rotateToTable = false;
         isCustomerAtTable = false;
-        anim.SetBool("IsSitting", false);
+        anim.SetBool("isSitting", false);
         anim.SetTrigger("TrStand");
     }
 
     public void SitAnimationFinished()
     {
-        anim.SetBool("IsSitting", true);
+        anim.SetBool("isSitting", true);
         Events.onCustomerReachedTable.Invoke(table);
     }
 
@@ -116,13 +118,31 @@ public class CustomerAnimation : MonoBehaviour
 
     public void LiftDrinkAnimFinished()
     {
-
+        Debug.Log("Drinking");
+        anim.SetBool("isDrinking", true);
+        StartCoroutine(table.Timer(GameManager.Instance.eatingTime, this.DrinkingComplete));
+    }
+    public void DrinkingComplete()
+    {
+        Debug.Log("TrLower");
+        anim.SetBool("isDrinking", false);
+        anim.SetTrigger("TrLower");
     }
     public void LowerDrinkAnimFinished()
     {
-
+        Debug.Log("Drinking done");
+        table.DrinkingComplete();
     }
+    
 
+    public void StartDrinkingAnim()
+    {
+        table.tempItem.transform.SetParent(rightHandPos.transform);
+        table.tempItem.transform.localPosition = Vector3.zero;
+        anim.SetBool("isSitting", false);
+        anim.SetTrigger("TrLift");
+        Debug.Log("TrLift");
+    }
     IEnumerator DestoryCustomer()
     {
         yield return new WaitForSeconds(8);
