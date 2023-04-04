@@ -63,8 +63,13 @@ public class PlayerController : MonoBehaviour
         {
             if(objectHit.collider.gameObject != hitObject)
             {
-                
-                hitObject = objectHit.collider.gameObject;
+                if(objectHit.collider.gameObject.GetComponent<ItemSOHolder>())
+                {
+                    hitObject = objectHit.collider.gameObject.GetComponentInParent<Placeable>().gameObject;
+                } else
+                {
+                    hitObject = objectHit.collider.gameObject;
+                }
                 SetSelectedObject(hitObject);
             }
         } else
@@ -78,21 +83,37 @@ public class PlayerController : MonoBehaviour
     {
         if(hitObject)
         {
-            Placeable placeable = hitObject.GetComponent<Placeable>();
+            Placeable placeable;
+            if (hitObject.GetComponent<ItemSOHolder>())
+            {
+                placeable = hitObject.GetComponentInParent<Placeable>();
+            } else
+            {
+                placeable = hitObject.GetComponent<Placeable>();
+            }
+             
+            //item placed on placeable
             if(!placeable.item && heldItem)
             {
                 placeable.item = heldItem;
                 placeable.item.transform.SetParent(placeable.itemPos.transform);
                 placeable.item.transform.localPosition = Vector3.zero;
+                placeable.item.layer = 3;
                 heldItem = null;
             } 
+            //item picked up from placeable
             else if(placeable.item && !heldItem)
             {
                 placeable.item.transform.SetParent(heldItemPos.transform);
                 heldItem = placeable.item;
                 heldItem.transform.localPosition = Vector3.zero;
+                if (heldItem.transform.childCount > 0 && heldItem.layer == 3)
+                {
+                    heldItem.transform.GetChild(0).gameObject.SetActive(false);
+                }
+                heldItem.layer = 0;
                 placeable.item = null;
-            } else if (placeable.item && heldItem)
+            } else if (placeable.item && heldItem) // item is on placeable and player has item already (checks if they can be combined)
             {
                 ItemSO placeableItemSO = placeable.item.GetComponent<ItemSOHolder>().itemSO;
                 ItemSO heldItemSO = heldItem.GetComponent<ItemSOHolder>().itemSO;

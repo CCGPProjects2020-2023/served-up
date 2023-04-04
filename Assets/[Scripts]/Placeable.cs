@@ -30,8 +30,16 @@ public class Placeable : MonoBehaviour
         if(obj == gameObject)
         {
             selectedCounterVisual.SetActive(true);
+            if(item && item.transform.childCount > 0)
+            {
+                item.transform.GetChild(0).gameObject.SetActive(true);
+            }
         } else
         {
+            if (item && item.transform.childCount > 0)
+            {
+                item.transform.GetChild(0).gameObject.SetActive(false);
+            }
             selectedCounterVisual.SetActive(false);
         }
     }

@@ -11,6 +11,7 @@ TagManager:
   - PlacePOS
   - Customer
   - WalkAwayPos
+  - Item
   layers:
   - Default
   - TransparentFX

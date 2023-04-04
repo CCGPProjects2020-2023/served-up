@@ -118,19 +118,16 @@ public class CustomerAnimation : MonoBehaviour
 
     public void LiftDrinkAnimFinished()
     {
-        Debug.Log("Drinking");
         anim.SetBool("isDrinking", true);
         StartCoroutine(table.Timer(GameManager.Instance.eatingTime, this.DrinkingComplete));
     }
     public void DrinkingComplete()
     {
-        Debug.Log("TrLower");
         anim.SetBool("isDrinking", false);
         anim.SetTrigger("TrLower");
     }
     public void LowerDrinkAnimFinished()
     {
-        Debug.Log("Drinking done");
         table.DrinkingComplete();
     }
     
@@ -141,7 +138,6 @@ public class CustomerAnimation : MonoBehaviour
         table.tempItem.transform.localPosition = Vector3.zero;
         anim.SetBool("isSitting", false);
         anim.SetTrigger("TrLift");
-        Debug.Log("TrLift");
     }
     IEnumerator DestoryCustomer()
     {

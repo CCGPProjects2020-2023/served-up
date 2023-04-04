@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3577188906270698175}
   - component: {fileID: 3567404700590755583}
   - component: {fileID: 3546192392087036195}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BeerKeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}

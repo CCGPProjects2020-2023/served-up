@@ -97,13 +97,13 @@ public class Table : Placeable
 
     public void DrinkingComplete()
     {
-        Debug.Log("Eating Complete");
         OrderComplete();
     }
 
     private void GameOver()
     {
         Debug.Log("Game Over");
+        Events.onGameOver.Invoke();
     }
 
     private void ThinkingComplete()
