@@ -222,6 +222,9 @@ MonoBehaviour:
   orderImage: {fileID: 8396394713986402246}
   customer: {fileID: 0}
   order: {fileID: 0}
+  tempItem: {fileID: 0}
+  currentTimer: 0
+  timer: 0
 --- !u!1 &1692713681187058546
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +267,7 @@ GameObject:
   - component: {fileID: 3198125589741028048}
   - component: {fileID: 3177553475666021702}
   - component: {fileID: 3188320971834106952}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: SelectedModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8674411151796050008}
   - component: {fileID: 8396394713986402246}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: OrderImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +432,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9168978308561181650}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: CustomerPos
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}

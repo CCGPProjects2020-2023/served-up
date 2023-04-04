@@ -28,7 +28,7 @@ public class CustomerAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!isLeaving)
+        if (!isLeaving)
         {
             isCustomerAtTable = CustomerIsAtTable();
         }
@@ -40,11 +40,6 @@ public class CustomerAnimation : MonoBehaviour
         {
             anim.SetBool("isWalking", false);
         }
-
-        
-            
-        
-        
     }
 
     IEnumerator SittingDown()
@@ -54,16 +49,14 @@ public class CustomerAnimation : MonoBehaviour
             if (isCustomerAtTable)
             {
                 StartCoroutine(RotateCustomer(table.gameObject.transform.GetChild(0)));
-                //RotateTowards(table.gameObject.transform.GetChild(0));
-                //this.transform.LookAt(table.gameObject.transform.GetChild(0));
-                Debug.Log("SITYTING");
+                Events.onCustomerReachedTable.Invoke(table);
                 anim.SetTrigger("TrSit");
                 yield break;
             }
             //Debug.Log("yeild reutrn");
             yield return new WaitForEndOfFrame();
         }
-        
+
     }
 
     IEnumerator RotateCustomer(Transform target)
@@ -118,7 +111,7 @@ public class CustomerAnimation : MonoBehaviour
         anim.SetTrigger("TrIdle");
         agent.SetDestination(walkAwayPos.transform.position);
         StartCoroutine(DestoryCustomer());
-        
+
     }
 
     IEnumerator DestoryCustomer()
@@ -127,5 +120,5 @@ public class CustomerAnimation : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-   
+
 }

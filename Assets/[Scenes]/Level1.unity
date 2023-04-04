@@ -3453,54 +3453,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 963194227, guid: c523375bbd178ff4b908497a92186ccf, type: 3}
-      propertyPath: field of view
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 963194227, guid: c523375bbd178ff4b908497a92186ccf, type: 3}
-      propertyPath: far clip plane
-      value: 5000
-      objectReference: {fileID: 0}
-    - target: {fileID: 963194227, guid: c523375bbd178ff4b908497a92186ccf, type: 3}
-      propertyPath: near clip plane
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 963194227, guid: c523375bbd178ff4b908497a92186ccf, type: 3}
-      propertyPath: orthographic size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 963194228, guid: c523375bbd178ff4b908497a92186ccf, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 963194228, guid: c523375bbd178ff4b908497a92186ccf, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 963194228, guid: c523375bbd178ff4b908497a92186ccf, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 963194228, guid: c523375bbd178ff4b908497a92186ccf, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 963194228, guid: c523375bbd178ff4b908497a92186ccf, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 963194228, guid: c523375bbd178ff4b908497a92186ccf, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 963194228, guid: c523375bbd178ff4b908497a92186ccf, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 963194228, guid: c523375bbd178ff4b908497a92186ccf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8312028321171546001, guid: c523375bbd178ff4b908497a92186ccf, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -19042,6 +18994,10 @@ MonoBehaviour:
   currentCustomers: 0
   startingDay: 0
   currentDay: 0
+  thinkingTime: 2.5
+  serviceTime: 150
+  deliveryTime: 90
+  eatingTime: 3
 --- !u!4 &2102853951
 Transform:
   m_ObjectHideFlags: 0

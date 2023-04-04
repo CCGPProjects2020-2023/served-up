@@ -25,7 +25,7 @@ public class Placeable : MonoBehaviour
         Events.onObjectSelectedChanged.RemoveListener(OnObjectSelectedChanged);
     }
 
-    private void OnObjectSelectedChanged(GameObject obj)
+    public void OnObjectSelectedChanged(GameObject obj)
     {
         if(obj == gameObject)
         {

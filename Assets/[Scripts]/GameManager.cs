@@ -22,6 +22,13 @@ public class GameManager : MonoBehaviour
     public int startingDay;
     public int currentDay;
 
+    [Header("Timers")]
+    public float thinkingTime = 2.5f;
+    public float serviceTime = 150;
+    public float deliveryTime = 90;
+    public float eatingTime = 3;
+
+
 
     private void Start()
     {

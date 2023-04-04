@@ -11,6 +11,7 @@ public static class Events
     public static readonly Evt onDayCompleted = new Evt();
     public static readonly Evt onDayStarted = new Evt();
     public static readonly Evt<GameObject> onObjectSelectedChanged = new Evt<GameObject>();
+    public static readonly Evt<Table> onCustomerReachedTable = new Evt<Table>();
 }
 
 public class Evt
