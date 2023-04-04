@@ -5,4 +5,5 @@ using UnityEngine;
 public class Order : MonoBehaviour
 {
     public ItemSO orderItem;
+    
 }

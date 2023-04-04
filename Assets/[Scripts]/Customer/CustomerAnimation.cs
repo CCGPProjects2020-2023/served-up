@@ -49,7 +49,6 @@ public class CustomerAnimation : MonoBehaviour
             if (isCustomerAtTable)
             {
                 StartCoroutine(RotateCustomer(table.gameObject.transform.GetChild(0)));
-                Events.onCustomerReachedTable.Invoke(table);
                 anim.SetTrigger("TrSit");
                 yield break;
             }
@@ -103,6 +102,7 @@ public class CustomerAnimation : MonoBehaviour
     public void SitAnimationFinished()
     {
         anim.SetBool("IsSitting", true);
+        Events.onCustomerReachedTable.Invoke(table);
     }
 
     public void StandAnimationFinished()
@@ -111,6 +111,15 @@ public class CustomerAnimation : MonoBehaviour
         anim.SetTrigger("TrIdle");
         agent.SetDestination(walkAwayPos.transform.position);
         StartCoroutine(DestoryCustomer());
+
+    }
+
+    public void LiftDrinkAnimFinished()
+    {
+
+    }
+    public void LowerDrinkAnimFinished()
+    {
 
     }
 

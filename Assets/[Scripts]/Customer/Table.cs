@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Timers;
+using UnityEngine.UI;
 
 public class Table : Placeable
 {
@@ -14,14 +15,73 @@ public class Table : Placeable
     public ItemSO order;
     public GameObject tempItem;
     private bool canTakeOrder;
-
+    public TableState currentState;
     public float currentTimer;
     public float timer;
+    private void Start()
+    {
+        currentState = TableState.None;
+    }
+    private void Update()
+    {
+        if(item && item.GetComponent<ItemSOHolder>().itemSO == order)
+        {
+            tempItem = item;
+            item = null;
+            StopAllCoroutines();
+            currentState = TableState.Eating;
+            StartCoroutine(Timer(GameManager.Instance.eatingTime, EatingComplete));
+        }
+    }
+    private void OrderComplete()
+    {
+        Destroy(tempItem);
+        tempItem = null;
+        order = null;
+        GameObject newItem = Instantiate(emptyCup, Vector3.zero, emptyCup.transform.rotation);
+        newItem.transform.SetParent(itemPos.transform);
+        item = newItem;
+        item.transform.localPosition = Vector3.zero;
+        customer.GetComponent<CustomerAnimation>().LeaveTable();
+        customer = null;
+        orderImage.sprite = null;
+        canTakeOrder = false;
+        timer = 0;
+        currentTimer = 0;
+        currentState = TableState.None;
+        Events.onTableStateChanged.Invoke(this, currentState);
+        Events.onOrderCompleted.Invoke();
+    }
 
+    public void TakeOrder()
+    {
+        if (customer)
+        {
+            if(canTakeOrder)
+            {
+                StopAllCoroutines();
+                currentState = TableState.Delivery;
+                StartCoroutine(Timer(GameManager.Instance.deliveryTime, GameOver));
+                order = OrderManager.Instance.GenerateOrder();
+                orderImage.sprite = order.icon;
+                Debug.Log(order.name);
+            }
+        }
+        
+    }
+    private void OnCustomerReachedTable(Table obj)
+    {
+        if(obj == this)
+        {
+            currentState = TableState.Thinking;
+            StartCoroutine(Timer(GameManager.Instance.thinkingTime, ThinkingComplete));
+        }
+    }
     IEnumerator Timer(float time, Action actionToBeExecuted)
     {
         currentTimer = time;
         timer = currentTimer;
+        Events.onTableStateChanged.Invoke(this, currentState);
         while (true)
         {
             timer = time;
@@ -49,60 +109,9 @@ public class Table : Placeable
     private void ThinkingComplete()
     {
         canTakeOrder = true;
+        currentState = TableState.Service;
         StartCoroutine(Timer(GameManager.Instance.serviceTime, GameOver));
     }
-
-  
-
-    private void Update()
-    {
-        if(item && item.GetComponent<ItemSOHolder>().itemSO == order)
-        {
-            tempItem = item;
-            item = null;
-            StopAllCoroutines();
-            StartCoroutine(Timer(GameManager.Instance.eatingTime, EatingComplete));
-        }
-    }
-    private void OrderComplete()
-    {
-        Destroy(tempItem);
-        tempItem = null;
-        order = null;
-        GameObject newItem = Instantiate(emptyCup, Vector3.zero, emptyCup.transform.rotation);
-        newItem.transform.SetParent(itemPos.transform);
-        item = newItem;
-        item.transform.localPosition = Vector3.zero;
-        customer.GetComponent<CustomerAnimation>().LeaveTable();
-        customer = null;
-        orderImage.sprite = null;
-        canTakeOrder = false;
-        Events.onOrderCompleted.Invoke();
-    }
-
-    public void TakeOrder()
-    {
-        if (customer)
-        {
-            if(canTakeOrder)
-            {
-                StopAllCoroutines();
-                StartCoroutine(Timer(GameManager.Instance.deliveryTime, GameOver));
-                order = OrderManager.Instance.GenerateOrder();
-                orderImage.sprite = order.icon;
-                Debug.Log(order.name);
-            }
-        }
-        
-    }
-    private void OnCustomerReachedTable(Table obj)
-    {
-        if(obj == this)
-        {
-            StartCoroutine(Timer(GameManager.Instance.thinkingTime, ThinkingComplete));
-        }
-    }
-
     private void OnEnable()
     {
         Events.onCustomerReachedTable.AddListener(OnCustomerReachedTable);
@@ -115,4 +124,12 @@ public class Table : Placeable
         Events.onObjectSelectedChanged.RemoveListener(OnObjectSelectedChanged);
     }
 
+}
+public enum TableState
+{
+    None,
+    Thinking,
+    Service,
+    Delivery,
+    Eating
 }
