@@ -43,6 +43,12 @@ public class GameManager : MonoBehaviour
         ModificationManager.Instance.GenerateModificationOptions();
     }
 
+    public void EndDay()
+    {
+        //do end of day stuff -- fade out or whatever
+        StartNewDay();
+    }
+
     public void StartNewDay()
     {
         currentDay++;

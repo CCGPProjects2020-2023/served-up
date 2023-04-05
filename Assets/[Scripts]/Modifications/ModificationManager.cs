@@ -18,6 +18,7 @@ public class ModificationManager : MonoBehaviour
 
         availableModifications = new List<ModificationSO>();
         availableModifications.AddRange(allModifications);
+        options = new List<GameObject>();
     }
 
     public List<GameObject> boardPositions;
@@ -26,15 +27,20 @@ public class ModificationManager : MonoBehaviour
     public List<ModificationSO> availableModifications;
     public GameObject modificationPrefab;
     public List<ModificationSO> enabledModifications;
+    public GameObject button;
+
+    private List<GameObject> options;
 
     public void GenerateModificationOptions()
     {
+        button.gameObject.SetActive(true);
         foreach (GameObject pos in boardPositions)
         {
             if (availableModifications.Count > 0)
             {
                 Placeable placeable = pos.GetComponent<Placeable>();
                 GameObject modObj = Instantiate(modificationPrefab, placeable.itemPos.transform);
+                options.Add(modObj);
                 placeable.item = modObj;
                 ModificationSOHolder holder = modObj.GetComponent<ModificationSOHolder>();
                 holder.modificationSO = RandomModifier();
@@ -44,41 +50,47 @@ public class ModificationManager : MonoBehaviour
 
     private void Start()
     {
-        GenerateModificationOptions();
+
     }
 
     public void LockInModifications()
     {
         Placeable placeable = chosenModification.GetComponent<Placeable>();
+        if (placeable.item == null)
+        {
+            return;
+        }
+
         ModificationSO chosenMod = placeable.item.GetComponent<ModificationSOHolder>().modificationSO;
 
-        ModificationSO option1 = boardPositions[0].GetComponent<Placeable>().item.GetComponent<ModificationSOHolder>().modificationSO;
-        ModificationSO option2 = boardPositions[1].GetComponent<Placeable>().item.GetComponent<ModificationSOHolder>().modificationSO;
 
-        if (chosenMod != option1)
+        foreach (GameObject obj in options)
         {
-            availableModifications.Add(option1);
-        }
-        else if (chosenMod != option2)
-        {
-            availableModifications.Add(option2);
+            if (chosenMod != obj)
+            {
+                availableModifications.Add(obj.GetComponent<ModificationSOHolder>().modificationSO);
+            }
         }
 
         chosenMod.Apply();
         enabledModifications.Add(chosenMod);
-
-        ClearOptions();
+        ResetBoard();
+        button.gameObject.SetActive(false);
+        GameManager.Instance.EndDay();
     }
 
-    public void ClearOptions()
+    public void ResetBoard()
     {
-        foreach (GameObject pos in boardPositions)
+        foreach (GameObject obj in options)
         {
-            Placeable placeable = pos.GetComponent<Placeable>();
-
-            Destroy(placeable.item);
-            placeable.item = null;
+            Destroy(obj);
         }
+
+        foreach (GameObject obj in boardPositions)
+        {
+            obj.GetComponent<Placeable>().item = null;
+        }
+        chosenModification.GetComponent<Placeable>().item = null;
     }
 
     public ModificationSO RandomModifier()

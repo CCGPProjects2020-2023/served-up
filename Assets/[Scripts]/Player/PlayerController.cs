@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
             if (hitObject.GetComponent<CupHolder>())
             {
                 CupHolder cupHolder = hitObject.GetComponent<CupHolder>();
-                
+
                 if (heldItem && cupHolder.maxCups > cupHolder.currentCups)
                 {
                     Debug.Log(heldItem);
@@ -101,18 +101,22 @@ public class PlayerController : MonoBehaviour
                         Destroy(heldItem);
                         heldItem = null;
                     }
-                    
+
                 }
                 else if (0 < cupHolder.currentCups && !heldItem)
                 {
                     GameObject emptyCup = Instantiate(cupHolder.emptyCup, heldItemPos.transform);
                     emptyCup.layer = 0;
                     heldItem = emptyCup;
-                    
+
                     cupHolder.currentCups--;
                     cupHolder.UpdateCups();
-                    
+
                 }
+            }
+            else if (hitObject.GetComponent<PlaceableButton>())
+            {
+                ModificationManager.Instance.LockInModifications();
             }
             else
             {
