@@ -130791,9 +130791,12 @@ MonoBehaviour:
   chosenModification: {fileID: 131793917}
   allModifications:
   - {fileID: 11400000, guid: de36ff239aa615846a89b7a6a6c2a074, type: 2}
+  - {fileID: 11400000, guid: 78cd89a200ad3b84eb6917f0cfe0a890, type: 2}
+  - {fileID: 11400000, guid: 117769c5f01b80f4aa1c8b121abd83b1, type: 2}
   availableModifications: []
   modificationPrefab: {fileID: 3014106787834077831, guid: ff4f777e70bec8e4099616d784003a66, type: 3}
-  enabledModifications: []
+  enabledModifications:
+  - {fileID: 11400000, guid: 78cd89a200ad3b84eb6917f0cfe0a890, type: 2}
   button: {fileID: 6497397739575328387}
 --- !u!65 &2080549948143957181
 BoxCollider:
