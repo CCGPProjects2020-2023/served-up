@@ -19677,10 +19677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSOList:
-  - {fileID: 11400000, guid: 30eaa2b1caf5fcd46a4f65fdacd80326, type: 2}
-  - {fileID: 11400000, guid: d488c669990772d4a9c10cc9c44fd9e0, type: 2}
   - {fileID: 11400000, guid: 923d57814513edf4aa49bbc5a2311ad3, type: 2}
-  - {fileID: 11400000, guid: b2ef98ac2b6cc8a4b94628305f392117, type: 2}
 --- !u!4 &2081274907
 Transform:
   m_ObjectHideFlags: 0

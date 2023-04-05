@@ -19,6 +19,7 @@ public class ModificationManager : MonoBehaviour
         availableModifications = new List<ModificationSO>();
         availableModifications.AddRange(allModifications);
         options = new List<GameObject>();
+        button.SetActive(false);
     }
 
     public List<GameObject> boardPositions;
@@ -33,7 +34,7 @@ public class ModificationManager : MonoBehaviour
 
     public void GenerateModificationOptions()
     {
-        button.gameObject.SetActive(true);
+        button.SetActive(true);
         foreach (GameObject pos in boardPositions)
         {
             if (availableModifications.Count > 0)
@@ -66,7 +67,7 @@ public class ModificationManager : MonoBehaviour
 
         foreach (GameObject obj in options)
         {
-            if (chosenMod != obj)
+            if (chosenMod != obj.GetComponent<ModificationSOHolder>().modificationSO)
             {
                 availableModifications.Add(obj.GetComponent<ModificationSOHolder>().modificationSO);
             }
@@ -75,7 +76,7 @@ public class ModificationManager : MonoBehaviour
         chosenMod.Apply();
         enabledModifications.Add(chosenMod);
         ResetBoard();
-        button.gameObject.SetActive(false);
+        button.SetActive(false);
         GameManager.Instance.EndDay();
     }
 

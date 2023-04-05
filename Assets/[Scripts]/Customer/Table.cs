@@ -1,10 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using System.Timers;
-using UnityEngine.UI;
 
 public class Table : Placeable
 {
@@ -24,9 +20,10 @@ public class Table : Placeable
     }
     private void Update()
     {
-        if(item && item.GetComponent<ItemSOHolder>().itemSO == order)
+        if (item && item.GetComponent<ItemSOHolder>().itemSO == order)
         {
             tempItem = item;
+            tempItem.layer = 0;
             item = null;
             StopAllCoroutines();
             currentState = TableState.Eating;
@@ -57,7 +54,7 @@ public class Table : Placeable
     {
         if (customer)
         {
-            if(canTakeOrder)
+            if (canTakeOrder)
             {
                 StopAllCoroutines();
                 currentState = TableState.Delivery;
@@ -67,11 +64,11 @@ public class Table : Placeable
                 Debug.Log(order.name);
             }
         }
-        
+
     }
     private void OnCustomerReachedTable(Table obj)
     {
-        if(obj == this)
+        if (obj == this)
         {
             currentState = TableState.Thinking;
             StartCoroutine(Timer(GameManager.Instance.thinkingTime, ThinkingComplete));
