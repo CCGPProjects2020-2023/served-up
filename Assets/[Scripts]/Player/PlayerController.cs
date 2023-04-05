@@ -92,10 +92,10 @@ public class PlayerController : MonoBehaviour
 
                 if (heldItem && cupHolder.maxCups > cupHolder.currentCups)
                 {
-                    Debug.Log(heldItem);
+                    
                     if (heldItem.GetComponent<ItemSOHolder>().itemSO == cupHolder.emptyCup.GetComponent<ItemSOHolder>().itemSO)
                     {
-                        Debug.Log("FROM GERE");
+                        
                         cupHolder.currentCups++;
                         cupHolder.UpdateCups();
                         Destroy(heldItem);
@@ -114,6 +114,24 @@ public class PlayerController : MonoBehaviour
 
                 }
             }
+            //WASHING CUPS
+            else  if (hitObject.GetComponent<CupWasher>())
+            {
+                CupWasher cupWasher = hitObject.GetComponent<CupWasher>();
+
+                if (heldItem && heldItem.GetComponent<ItemSOHolder>().itemSO == cupWasher.dirtyCup.GetComponent<ItemSOHolder>().itemSO)
+                {
+                    Destroy(heldItem);
+                    heldItem = null;
+                    GameObject dirtyCup = Instantiate(cupWasher.emptyCup, heldItemPos.transform);
+                    dirtyCup.layer = 0;
+                    heldItem = dirtyCup;
+                    
+                    
+
+                }
+            }
+
             else if (hitObject.GetComponent<PlaceableButton>())
             {
                 ModificationManager.Instance.LockInModifications();

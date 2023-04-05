@@ -12,7 +12,7 @@ public class CupHolder : Placeable
     private void Start()
     {
         maxCups = 6;
-        currentCups = 4;
+        currentCups = 6;
         UpdateCups();
     }
 

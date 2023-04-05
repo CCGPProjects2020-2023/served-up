@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CupWasher : Placeable
 {
+    public GameObject dirtyCup;
+    public GameObject emptyCup;
     // Start is called before the first frame update
     void Start()
     {

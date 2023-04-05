@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 8783579783028104089}
   - component: {fileID: 8742082114707624869}
   - component: {fileID: 291760934428881794}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WaterBucket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8770590511555241717}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 19.84866, y: 0.38670063, z: -18.101156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -329,3 +329,5 @@ MonoBehaviour:
   itemPos: {fileID: 5293550839432059169}
   item: {fileID: 0}
   selectedCounterVisual: {fileID: 6100246050727329363}
+  dirtyCup: {fileID: 5323482738442007081, guid: ccefb15980a09df45844b169109dc008, type: 3}
+  emptyCup: {fileID: 5323482738442007081, guid: ee1ef3f9c5a7fa2489e69169cd48fc41, type: 3}
