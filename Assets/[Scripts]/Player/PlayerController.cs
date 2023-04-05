@@ -115,17 +115,17 @@ public class PlayerController : MonoBehaviour
                 }
             }
             //WASHING CUPS
-            else  if (hitObject.GetComponent<CupWasher>())
+            else  if (hitObject.GetComponent<ItemConverter>())
             {
-                CupWasher cupWasher = hitObject.GetComponent<CupWasher>();
+                ItemConverter itemConverter = hitObject.GetComponent<ItemConverter>();
 
-                if (heldItem && heldItem.GetComponent<ItemSOHolder>().itemSO == cupWasher.dirtyCup.GetComponent<ItemSOHolder>().itemSO)
+                if (heldItem && heldItem.GetComponent<ItemSOHolder>().itemSO == itemConverter.inputItem.GetComponent<ItemSOHolder>().itemSO)
                 {
                     Destroy(heldItem);
                     heldItem = null;
-                    GameObject dirtyCup = Instantiate(cupWasher.emptyCup, heldItemPos.transform);
-                    dirtyCup.layer = 0;
-                    heldItem = dirtyCup;
+                    GameObject outputItem = Instantiate(itemConverter.outputItem, heldItemPos.transform);
+                    outputItem.layer = 0;
+                    heldItem = outputItem;
                     
                     
 
