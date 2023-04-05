@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,35 +11,37 @@ public class CustomerManager : MonoBehaviour
     public List<Table> tables;
     public GameObject customerPrefab;
     public List<GameObject> customersInScene;
-  
+    public List<float> interarrivalTimes;
 
     // Start is called before the first frame update
     void Start()
     {
         
     }
+    private void Update()
+    {
+        Debug.Log(GenerateInterarrivalValue());
+    }
     private void OnDayStarted()
     {
         for (int i = 0; i < GameManager.Instance.currentCustomers; i++)
         {
-            CreateCustomer();
+            interarrivalTimes.Add(GenerateInterarrivalValue());
         }
+        StartCoroutine(SpawnCustomers());
         StartCoroutine(CheckCustomerAmount());
     }
-
     private void OnEnable()
     {
         Events.onOrderCompleted.AddListener(OnOrderCompleted);
         Events.onDayStarted.AddListener(OnDayStarted);
         
     }
-
     private void OnDisable()
     {
         Events.onOrderCompleted.RemoveListener(OnOrderCompleted);
         Events.onDayStarted.RemoveListener(OnDayStarted);
     }
-
     IEnumerator CheckCustomerAmount()
     {
         while(true)
@@ -52,8 +55,15 @@ public class CustomerManager : MonoBehaviour
         }
         
     }
-
-
+    IEnumerator SpawnCustomers()
+    {
+        for (int i = 0; i < GameManager.Instance.currentCustomers; i++)
+        {
+            yield return new WaitForSeconds(interarrivalTimes[i]);
+            CreateCustomer();
+        }
+        yield return null;
+    }
     public void CreateCustomer()
     {
         GameObject customer = Instantiate(customerPrefab, Vector3.zero, Quaternion.identity);
@@ -70,8 +80,6 @@ public class CustomerManager : MonoBehaviour
                 customer.GetComponent<CustomerAnimation>().table = table;
                 customer.GetComponent<CustomerAnimation>().isInQueue = false;
                 customer.GetComponent<NavMeshAgent>().SetDestination(table.customerPos.transform.position);
-                //customer.transform.position = table.customerPos.transform.position;
-                //customer.transform.rotation = table.customerPos.transform.rotation;
                 return;
             }
         }
@@ -120,7 +128,17 @@ public class CustomerManager : MonoBehaviour
                 }
             }
             
+        }   
+    }
+    private float GenerateInterarrivalValue()
+    {
+        float lambda = ((100 + 25 * Mathf.Floor((GameManager.Instance.currentDay - 1) / 3f)) / GameManager.Instance.currentCustomers);
+        float maxDeviationValue = 5 - 0.25f * GameManager.Instance.currentCustomers;
+        float randomValue = -Mathf.Log(1 - UnityEngine.Random.value) / lambda;
+        while (randomValue > lambda + maxDeviationValue || randomValue < lambda - maxDeviationValue)
+        {
+            randomValue = -Mathf.Log(1 - UnityEngine.Random.value) / lambda;
         }
-            
+        return randomValue;
     }
 }
