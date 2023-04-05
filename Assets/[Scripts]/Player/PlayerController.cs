@@ -86,79 +86,110 @@ public class PlayerController : MonoBehaviour
         if (hitObject)
         {
             Placeable placeable;
-            if (hitObject.GetComponent<ItemSOHolder>())
+            if (hitObject.GetComponent<CupHolder>())
             {
-                placeable = hitObject.GetComponentInParent<Placeable>();
-            }
-            else if (hitObject.GetComponent<ModificationSOHolder>())
-            {
-                placeable = hitObject.GetComponentInParent<Placeable>();
+                CupHolder cupHolder = hitObject.GetComponent<CupHolder>();
+                
+                if (heldItem && cupHolder.maxCups > cupHolder.currentCups)
+                {
+                    Debug.Log(heldItem);
+                    if (heldItem.GetComponent<ItemSOHolder>().itemSO == cupHolder.emptyCup.GetComponent<ItemSOHolder>().itemSO)
+                    {
+                        Debug.Log("FROM GERE");
+                        cupHolder.currentCups++;
+                        cupHolder.UpdateCups();
+                        Destroy(heldItem);
+                        heldItem = null;
+                    }
+                    
+                }
+                else if (0 < cupHolder.currentCups && !heldItem)
+                {
+                    GameObject emptyCup = Instantiate(cupHolder.emptyCup, heldItemPos.transform);
+                    emptyCup.layer = 0;
+                    heldItem = emptyCup;
+                    
+                    cupHolder.currentCups--;
+                    cupHolder.UpdateCups();
+                    
+                }
             }
             else
             {
-                placeable = hitObject.GetComponent<Placeable>();
-            }
-
-            //item placed on placeable
-            if (!placeable.item && heldItem)
-            {
-                placeable.item = heldItem;
-                placeable.item.transform.SetParent(placeable.itemPos.transform, true);
-                placeable.item.transform.localPosition = Vector3.zero;
-                placeable.item.transform.localRotation = Quaternion.identity;
-                placeable.item.layer = 3;
-                heldItem = null;
-            }
-            //item picked up from placeable
-            else if (placeable.item && !heldItem)
-            {
-                placeable.item.transform.SetParent(heldItemPos.transform);
-                heldItem = placeable.item;
-                heldItem.transform.localPosition = Vector3.zero;
-                if (heldItem.transform.childCount > 0 && heldItem.layer == 3)
+                if (hitObject.GetComponent<ItemSOHolder>())
                 {
-                    heldItem.transform.GetChild(0).gameObject.SetActive(false);
+                    placeable = hitObject.GetComponentInParent<Placeable>();
                 }
-                heldItem.layer = 0;
-                placeable.item = null;
-            }
-            else if (placeable.item && heldItem) // item is on placeable and player has item already (checks if they can be combined)
-            {
-                ItemSO placeableItemSO = placeable.item.GetComponent<ItemSOHolder>().itemSO;
-                ItemSO heldItemSO = heldItem.GetComponent<ItemSOHolder>().itemSO;
-                ItemSO outputItem = recipeSystem.GetRecipeOutput(placeableItemSO, heldItemSO);
-                if (outputItem != null)
+                else if (hitObject.GetComponent<ModificationSOHolder>())
                 {
-                    if (placeableItemSO.isDestructable && !heldItemSO.isDestructable)
-                    {
-                        Destroy(placeable.item);
-                        GameObject newItem = Instantiate(outputItem.prefab, new Vector3(0, 0, 0), outputItem.prefab.transform.rotation);
-                        newItem.transform.SetParent(placeable.itemPos.transform);
-                        placeable.item = newItem;
-                        placeable.item.layer = 3;
-                        placeable.item.transform.localPosition = Vector3.zero;
-                    }
-                    else if (!placeableItemSO.isDestructable && heldItemSO.isDestructable)
-                    {
-                        Destroy(heldItem);
-                        heldItem = null;
+                    placeable = hitObject.GetComponentInParent<Placeable>();
+                }
+                else
+                {
+                    placeable = hitObject.GetComponent<Placeable>();
+                }
 
-                        GameObject newItem = Instantiate(outputItem.prefab, new Vector3(0, 0, 0), outputItem.prefab.transform.rotation);
-                        newItem.transform.SetParent(heldItemPos.transform);
-                        heldItem = newItem;
-                        heldItem.layer = 0;
-                        heldItem.transform.localPosition = Vector3.zero;
-                    }
-                    else
+                //item placed on placeable
+                if (!placeable.item && heldItem)
+                {
+                    placeable.item = heldItem;
+                    placeable.item.transform.SetParent(placeable.itemPos.transform, true);
+                    placeable.item.transform.localPosition = Vector3.zero;
+                    placeable.item.transform.localRotation = Quaternion.identity;
+                    placeable.item.layer = 3;
+                    heldItem = null;
+                }
+                //item picked up from placeable
+                else if (placeable.item && !heldItem)
+                {
+                    placeable.item.transform.SetParent(heldItemPos.transform);
+                    heldItem = placeable.item;
+                    heldItem.transform.localPosition = Vector3.zero;
+                    if (heldItem.transform.childCount > 0 && heldItem.layer == 3)
                     {
-                        Destroy(placeable.item);
-                        GameObject newItem = Instantiate(outputItem.prefab, new Vector3(0, 0, 0), outputItem.prefab.transform.rotation);
-                        newItem.transform.SetParent(placeable.itemPos.transform);
-                        placeable.item = newItem;
-                        placeable.item.layer = 3;
-                        placeable.item.transform.localPosition = Vector3.zero;
-                        Destroy(heldItem);
-                        heldItem = null;
+                        heldItem.transform.GetChild(0).gameObject.SetActive(false);
+                    }
+                    heldItem.layer = 0;
+                    placeable.item = null;
+                }
+                else if (placeable.item && heldItem) // item is on placeable and player has item already (checks if they can be combined)
+                {
+                    ItemSO placeableItemSO = placeable.item.GetComponent<ItemSOHolder>().itemSO;
+                    ItemSO heldItemSO = heldItem.GetComponent<ItemSOHolder>().itemSO;
+                    ItemSO outputItem = recipeSystem.GetRecipeOutput(placeableItemSO, heldItemSO);
+                    if (outputItem != null)
+                    {
+                        if (placeableItemSO.isDestructable && !heldItemSO.isDestructable)
+                        {
+                            Destroy(placeable.item);
+                            GameObject newItem = Instantiate(outputItem.prefab, new Vector3(0, 0, 0), outputItem.prefab.transform.rotation);
+                            newItem.transform.SetParent(placeable.itemPos.transform);
+                            placeable.item = newItem;
+                            placeable.item.layer = 3;
+                            placeable.item.transform.localPosition = Vector3.zero;
+                        }
+                        else if (!placeableItemSO.isDestructable && heldItemSO.isDestructable)
+                        {
+                            Destroy(heldItem);
+                            heldItem = null;
+
+                            GameObject newItem = Instantiate(outputItem.prefab, new Vector3(0, 0, 0), outputItem.prefab.transform.rotation);
+                            newItem.transform.SetParent(heldItemPos.transform);
+                            heldItem = newItem;
+                            heldItem.layer = 0;
+                            heldItem.transform.localPosition = Vector3.zero;
+                        }
+                        else
+                        {
+                            Destroy(placeable.item);
+                            GameObject newItem = Instantiate(outputItem.prefab, new Vector3(0, 0, 0), outputItem.prefab.transform.rotation);
+                            newItem.transform.SetParent(placeable.itemPos.transform);
+                            placeable.item = newItem;
+                            placeable.item.layer = 3;
+                            placeable.item.transform.localPosition = Vector3.zero;
+                            Destroy(heldItem);
+                            heldItem = null;
+                        }
                     }
                 }
             }
