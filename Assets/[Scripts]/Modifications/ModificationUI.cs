@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +14,7 @@ public class ModificationUI : MonoBehaviour
 
     private void Start()
     {
-        modificationSO = GetComponentInParent<ModificationSO>();
+        modificationSO = GetComponentInParent<ModificationSOHolder>().modificationSO;
         SetupUI();
     }
 
@@ -23,16 +24,20 @@ public class ModificationUI : MonoBehaviour
         descriptionText.text = modificationSO.description;
         icon.sprite = modificationSO.icon;
 
-        positivesText.text = modificationSO.positives[0];
-        modificationSO.positives.RemoveAt(0);
-        foreach (string str in modificationSO.positives)
+        List<string> positives = new List<string>();
+        positives.AddRange(modificationSO.positives);
+        positivesText.text = positives[0];
+        positives.RemoveAt(0);
+        foreach (string str in positives)
         {
             positivesText.text += "\n" + str;
         }
 
-        negativesText.text = modificationSO.negatives[0];
-        modificationSO.negatives.RemoveAt(0);
-        foreach (string str in modificationSO.negatives)
+        List<string> negatives = new List<string>();
+        negatives.AddRange(modificationSO.negatives);
+        negativesText.text = negatives[0];
+        negatives.RemoveAt(0);
+        foreach (string str in negatives)
         {
             negativesText.text += "\n" + str;
         }

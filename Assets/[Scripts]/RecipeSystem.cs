@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,21 +19,16 @@ public class RecipeSystem : MonoBehaviour
     public List<RecipeSO> recipes;
     public ItemSO GetRecipeOutput(ItemSO item1, ItemSO item2)
     {
-        foreach(RecipeSO recipe in recipes)
+        foreach (RecipeSO recipe in recipes)
         {
-            if(recipe.input1 == item1 || recipe.input1 == item2)
+            if (recipe.input1 == item1 || recipe.input1 == item2)
             {
-                if(recipe.input2 == item1 || recipe.input2 == item2)
+                if (recipe.input2 == item1 || recipe.input2 == item2)
                 {
                     return recipe.output;
                 }
             }
         }
         return null;
-    }
-
-    public void AddRecipe(RecipeSO recipe)
-    {
-        recipes.Add(recipe);
     }
 }

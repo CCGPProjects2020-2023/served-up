@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,5 +21,9 @@ public class OrderManager : MonoBehaviour
         ItemSO order = itemSOList[Random.Range(0, itemSOList.Count)];
 
         return order;
+    }
+    public void AddRecipe(RecipeSO recipe)
+    {
+        itemSOList.Add(recipe.output);
     }
 }

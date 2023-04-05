@@ -8,7 +8,6 @@ public abstract class ModificationSO : ScriptableObject
     public string description;
     public List<string> positives;
     public List<string> negatives;
-    public GameObject prefab;
 
     public abstract void Apply();
 }

@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -59,20 +55,26 @@ public class PlayerController : MonoBehaviour
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         //Vector3 rayPos = new Vector3(transform.position.x, transform.position.y - 0.25f, transform.position.z);
         Debug.DrawRay(ray.origin, ray.direction * 2, Color.green);
-        if (Physics.Raycast(ray,  out objectHit, 2, placeableLayer))
+        if (Physics.Raycast(ray, out objectHit, 2, placeableLayer))
         {
-            if(objectHit.collider.gameObject != hitObject)
+            if (objectHit.collider.gameObject != hitObject)
             {
-                if(objectHit.collider.gameObject.GetComponent<ItemSOHolder>())
+                if (objectHit.collider.gameObject.GetComponent<ItemSOHolder>())
                 {
                     hitObject = objectHit.collider.gameObject.GetComponentInParent<Placeable>().gameObject;
-                } else
+                }
+                else if (objectHit.collider.gameObject.GetComponent<ModificationSOHolder>())
+                {
+                    hitObject = objectHit.collider.gameObject.GetComponentInParent<Placeable>().gameObject;
+                }
+                else
                 {
                     hitObject = objectHit.collider.gameObject;
                 }
                 SetSelectedObject(hitObject);
             }
-        } else
+        }
+        else
         {
             hitObject = null;
             SetSelectedObject(hitObject);
@@ -81,28 +83,34 @@ public class PlayerController : MonoBehaviour
 
     private void Pickup()
     {
-        if(hitObject)
+        if (hitObject)
         {
             Placeable placeable;
             if (hitObject.GetComponent<ItemSOHolder>())
             {
                 placeable = hitObject.GetComponentInParent<Placeable>();
-            } else
+            }
+            else if (hitObject.GetComponent<ModificationSOHolder>())
+            {
+                placeable = hitObject.GetComponentInParent<Placeable>();
+            }
+            else
             {
                 placeable = hitObject.GetComponent<Placeable>();
             }
-             
+
             //item placed on placeable
-            if(!placeable.item && heldItem)
+            if (!placeable.item && heldItem)
             {
                 placeable.item = heldItem;
-                placeable.item.transform.SetParent(placeable.itemPos.transform);
+                placeable.item.transform.SetParent(placeable.itemPos.transform, true);
                 placeable.item.transform.localPosition = Vector3.zero;
+                placeable.item.transform.localRotation = Quaternion.identity;
                 placeable.item.layer = 3;
                 heldItem = null;
-            } 
+            }
             //item picked up from placeable
-            else if(placeable.item && !heldItem)
+            else if (placeable.item && !heldItem)
             {
                 placeable.item.transform.SetParent(heldItemPos.transform);
                 heldItem = placeable.item;
@@ -113,21 +121,24 @@ public class PlayerController : MonoBehaviour
                 }
                 heldItem.layer = 0;
                 placeable.item = null;
-            } else if (placeable.item && heldItem) // item is on placeable and player has item already (checks if they can be combined)
+            }
+            else if (placeable.item && heldItem) // item is on placeable and player has item already (checks if they can be combined)
             {
                 ItemSO placeableItemSO = placeable.item.GetComponent<ItemSOHolder>().itemSO;
                 ItemSO heldItemSO = heldItem.GetComponent<ItemSOHolder>().itemSO;
                 ItemSO outputItem = recipeSystem.GetRecipeOutput(placeableItemSO, heldItemSO);
                 if (outputItem != null)
                 {
-                    if(placeableItemSO.isDestructable && !heldItemSO.isDestructable)
+                    if (placeableItemSO.isDestructable && !heldItemSO.isDestructable)
                     {
                         Destroy(placeable.item);
                         GameObject newItem = Instantiate(outputItem.prefab, new Vector3(0, 0, 0), outputItem.prefab.transform.rotation);
                         newItem.transform.SetParent(placeable.itemPos.transform);
                         placeable.item = newItem;
+                        placeable.item.layer = 3;
                         placeable.item.transform.localPosition = Vector3.zero;
-                    } else if(!placeableItemSO.isDestructable && heldItemSO.isDestructable)
+                    }
+                    else if (!placeableItemSO.isDestructable && heldItemSO.isDestructable)
                     {
                         Destroy(heldItem);
                         heldItem = null;
@@ -135,17 +146,20 @@ public class PlayerController : MonoBehaviour
                         GameObject newItem = Instantiate(outputItem.prefab, new Vector3(0, 0, 0), outputItem.prefab.transform.rotation);
                         newItem.transform.SetParent(heldItemPos.transform);
                         heldItem = newItem;
+                        heldItem.layer = 0;
                         heldItem.transform.localPosition = Vector3.zero;
-                    } else
+                    }
+                    else
                     {
                         Destroy(placeable.item);
-                        GameObject newItem = Instantiate(outputItem.prefab, new Vector3(0,0,0), outputItem.prefab.transform.rotation);
+                        GameObject newItem = Instantiate(outputItem.prefab, new Vector3(0, 0, 0), outputItem.prefab.transform.rotation);
                         newItem.transform.SetParent(placeable.itemPos.transform);
                         placeable.item = newItem;
+                        placeable.item.layer = 3;
                         placeable.item.transform.localPosition = Vector3.zero;
                         Destroy(heldItem);
                         heldItem = null;
-                    }      
+                    }
                 }
             }
         }
@@ -153,9 +167,9 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
-        if(hitObject)
+        if (hitObject)
         {
-            if(hitObject.TryGetComponent(out Table table))
+            if (hitObject.TryGetComponent(out Table table))
             {
                 if (table.order == null)
                     table.TakeOrder();
@@ -175,7 +189,7 @@ public class PlayerController : MonoBehaviour
 
 
                 }
-            } 
+            }
         }
     }
 
@@ -184,9 +198,9 @@ public class PlayerController : MonoBehaviour
 
         moveDir = Vector3.zero;
         moveDir = orientation.forward * move.y + orientation.right * move.x;
-      
-            rb.AddForce(moveDir.normalized * speed * 100f* Time.fixedDeltaTime, ForceMode.Force);
-        
+
+        rb.AddForce(moveDir.normalized * speed * 100f * Time.fixedDeltaTime, ForceMode.Force);
+
 
     }
 
@@ -205,5 +219,5 @@ public class PlayerController : MonoBehaviour
     private void SetSelectedObject(GameObject obj)
     {
         Events.onObjectSelectedChanged.Invoke(obj);
-    } 
+    }
 }

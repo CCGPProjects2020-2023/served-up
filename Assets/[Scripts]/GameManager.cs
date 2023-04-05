@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -19,6 +17,7 @@ public class GameManager : MonoBehaviour
     }
     public int startingCustomers;
     public int currentCustomers;
+    public float customerModifier; // 
     public int startingDay;
     public int currentDay;
 
@@ -53,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     private int CalculateCustomerAmount()
     {
-        return Mathf.RoundToInt(0.0291f * Mathf.Pow(currentDay, 2) + 0.6917f * currentDay + 2.4615f);
+        return Mathf.RoundToInt((1 - customerModifier) * (0.0291f * Mathf.Pow(currentDay, 2) + 0.6917f * currentDay + 2.4615f));
     }
     private void OnEnable()
     {
