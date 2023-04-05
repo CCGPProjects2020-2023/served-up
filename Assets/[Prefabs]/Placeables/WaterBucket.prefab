@@ -329,5 +329,5 @@ MonoBehaviour:
   itemPos: {fileID: 5293550839432059169}
   item: {fileID: 0}
   selectedCounterVisual: {fileID: 6100246050727329363}
-  dirtyCup: {fileID: 5323482738442007081, guid: ccefb15980a09df45844b169109dc008, type: 3}
-  emptyCup: {fileID: 5323482738442007081, guid: ee1ef3f9c5a7fa2489e69169cd48fc41, type: 3}
+  inputItem: {fileID: 5323482738442007081, guid: ccefb15980a09df45844b169109dc008, type: 3}
+  outputItem: {fileID: 5323482738442007081, guid: ee1ef3f9c5a7fa2489e69169cd48fc41, type: 3}

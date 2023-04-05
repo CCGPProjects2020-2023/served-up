@@ -5278,22 +5278,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 919038564487565670, guid: bfaef606e76588e4fbf74282c6e87d55, type: 3}
-      propertyPath: itemPos
-      value: 
-      objectReference: {fileID: 1690699042}
-    - target: {fileID: 919038564487565670, guid: bfaef606e76588e4fbf74282c6e87d55, type: 3}
-      propertyPath: inputItem
-      value: 
-      objectReference: {fileID: 5323482738442007081, guid: ee1ef3f9c5a7fa2489e69169cd48fc41, type: 3}
-    - target: {fileID: 919038564487565670, guid: bfaef606e76588e4fbf74282c6e87d55, type: 3}
-      propertyPath: outputItem
-      value: 
-      objectReference: {fileID: 7411608472827437335, guid: 27ce97542617cc24f92f9576a33c9b0b, type: 3}
-    - target: {fileID: 1392083853822557375, guid: bfaef606e76588e4fbf74282c6e87d55, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3591062007993282541, guid: bfaef606e76588e4fbf74282c6e87d55, type: 3}
       propertyPath: m_Name
       value: BeerKeg
@@ -15759,11 +15743,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4419715194353460, guid: bf7e228c4f7559445b61d3f1f4207327, type: 3}
   m_PrefabInstance: {fileID: 2026796839}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1690699042 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7577926190486292377, guid: bfaef606e76588e4fbf74282c6e87d55, type: 3}
-  m_PrefabInstance: {fileID: 601557322}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1690783572 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5681630671243472297, guid: abf06654f3c4cc34c959b827d289086a, type: 3}
@@ -19678,7 +19657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSOList:
-  - {fileID: 11400000, guid: 923d57814513edf4aa49bbc5a2311ad3, type: 2}
+  - {fileID: 11400000, guid: af253633b8e033a48ba3ee152dd10db1, type: 2}
 --- !u!4 &2081274907
 Transform:
   m_ObjectHideFlags: 0
@@ -19687,7 +19666,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081274905}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.27878135, y: 2.762886, z: -6.2103634}
+  m_LocalPosition: {x: 0.27878132, y: 2.762886, z: -6.2103634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -130968,10 +130947,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: de36ff239aa615846a89b7a6a6c2a074, type: 2}
   - {fileID: 11400000, guid: 78cd89a200ad3b84eb6917f0cfe0a890, type: 2}
   - {fileID: 11400000, guid: 117769c5f01b80f4aa1c8b121abd83b1, type: 2}
+  - {fileID: 11400000, guid: 2cfd932193fb7c647b7f1a8fdff32114, type: 2}
   availableModifications: []
   modificationPrefab: {fileID: 3014106787834077831, guid: ff4f777e70bec8e4099616d784003a66, type: 3}
-  enabledModifications:
-  - {fileID: 11400000, guid: 78cd89a200ad3b84eb6917f0cfe0a890, type: 2}
+  enabledModifications: []
   button: {fileID: 6497397739575328387}
 --- !u!65 &2080549948143957181
 BoxCollider:
@@ -131115,10 +131094,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6100246050727329363, guid: b081d527827b86543a4d67cc9d9fa80e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8764491419881680109, guid: b081d527827b86543a4d67cc9d9fa80e, type: 3}
       propertyPath: m_RootOrder
       value: 2

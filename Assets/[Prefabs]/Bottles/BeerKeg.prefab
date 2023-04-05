@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1394878459723819885
 Transform:
   m_ObjectHideFlags: 0
@@ -197,11 +197,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90204e101fb12d442a45efdfa2d4de63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPos: {fileID: 0}
+  itemPos: {fileID: 7577926190486292377}
   item: {fileID: 0}
   selectedCounterVisual: {fileID: 1392083853822557375}
-  inputItem: {fileID: 0}
-  outputItem: {fileID: 0}
+  inputItem: {fileID: 5323482738442007081, guid: ee1ef3f9c5a7fa2489e69169cd48fc41, type: 3}
+  outputItem: {fileID: 7411608472827437335, guid: 27ce97542617cc24f92f9576a33c9b0b, type: 3}
 --- !u!1 &5118675773318407970
 GameObject:
   m_ObjectHideFlags: 0
