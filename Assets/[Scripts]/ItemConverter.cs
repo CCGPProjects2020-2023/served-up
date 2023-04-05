@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CupWasher : Placeable
+public class ItemConverter : Placeable
 {
-    public GameObject dirtyCup;
-    public GameObject emptyCup;
+    public GameObject inputItem;
+    public GameObject outputItem;
     // Start is called before the first frame update
     void Start()
     {
