@@ -294,7 +294,7 @@ MonoBehaviour:
   itemPos: {fileID: 1692713681187058546}
   item: {fileID: 0}
   selectedCounterVisual: {fileID: 3199840223689667616}
-  emptyCup: {fileID: 5323482738442007081, guid: ee1ef3f9c5a7fa2489e69169cd48fc41, type: 3}
+  dirtyCup: {fileID: 5323482738442007081, guid: ccefb15980a09df45844b169109dc008, type: 3}
   customerPos: {fileID: 6120251671826291694}
   orderImage: {fileID: 8396394713986402246}
   customer: {fileID: 0}

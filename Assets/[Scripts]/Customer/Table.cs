@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Table : Placeable
 {
-    public GameObject emptyCup;
+    public GameObject dirtyCup;
     public GameObject customerPos;
     public SpriteRenderer orderImage;
     public GameObject customer;
@@ -35,7 +35,7 @@ public class Table : Placeable
         Destroy(tempItem);
         tempItem = null;
         order = null;
-        GameObject newItem = Instantiate(emptyCup, Vector3.zero, emptyCup.transform.rotation);
+        GameObject newItem = Instantiate(dirtyCup, Vector3.zero, dirtyCup.transform.rotation);
         newItem.transform.SetParent(itemPos.transform);
         item = newItem;
         item.transform.localPosition = Vector3.zero;
