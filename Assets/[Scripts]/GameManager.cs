@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     public void OnDayCompleted()
     {
         //choose modification - then start next day
-        StartNewDay();
+        ModificationManager.Instance.GenerateModificationOptions();
     }
 
     public void StartNewDay()

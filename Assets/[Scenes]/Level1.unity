@@ -130158,9 +130158,11 @@ MonoBehaviour:
   - {fileID: 1690783572}
   - {fileID: 1086537784}
   chosenModification: {fileID: 131793917}
-  modifications:
+  allModifications:
   - {fileID: 11400000, guid: de36ff239aa615846a89b7a6a6c2a074, type: 2}
+  availableModifications: []
   modificationPrefab: {fileID: 3014106787834077831, guid: ff4f777e70bec8e4099616d784003a66, type: 3}
+  enabledModifications: []
 --- !u!65 &2080549948143957181
 BoxCollider:
   m_ObjectHideFlags: 0
