@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,30 +10,27 @@ public class CustomerManager : MonoBehaviour
     public GameObject customerPrefab;
     public List<GameObject> customersInScene;
     public List<float> interarrivalTimes;
+    public float customersServed;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
     private void Update()
     {
-        Debug.Log(GenerateInterarrivalValue());
     }
     private void OnDayStarted()
     {
+        customersServed = 0;
+        interarrivalTimes = new List<float>();
+        interarrivalTimes.Clear();
         for (int i = 0; i < GameManager.Instance.currentCustomers; i++)
         {
             interarrivalTimes.Add(GenerateInterarrivalValue());
         }
         StartCoroutine(SpawnCustomers());
-        StartCoroutine(CheckCustomerAmount());
     }
     private void OnEnable()
     {
         Events.onOrderCompleted.AddListener(OnOrderCompleted);
         Events.onDayStarted.AddListener(OnDayStarted);
-        
+
     }
     private void OnDisable()
     {
@@ -44,7 +39,7 @@ public class CustomerManager : MonoBehaviour
     }
     IEnumerator CheckCustomerAmount()
     {
-        while(true)
+        while (true)
         {
             if (GameObject.FindGameObjectsWithTag("Customer").Length <= 0)
             {
@@ -53,7 +48,7 @@ public class CustomerManager : MonoBehaviour
             }
             yield return new WaitForEndOfFrame();
         }
-        
+
     }
     IEnumerator SpawnCustomers()
     {
@@ -96,8 +91,10 @@ public class CustomerManager : MonoBehaviour
     }
     private void OnOrderCompleted()
     {
+        customersServed++;
+        CheckCustomersServed();
         GameObject currentCustomer;
-        for(int i= 0; i < queuePositions.Count; i++)
+        for (int i = 0; i < queuePositions.Count; i++)
         {
             if (queuePositions[i].customer)
             {
@@ -110,7 +107,7 @@ public class CustomerManager : MonoBehaviour
                     {
                         if (table.customer == null)
                         {
-                            
+
                             table.customer = currentCustomer;
                             currentCustomer.GetComponent<CustomerAnimation>().table = table;
                             currentCustomer.GetComponent<CustomerAnimation>().isInQueue = false;
@@ -127,18 +124,27 @@ public class CustomerManager : MonoBehaviour
                     currentCustomer.GetComponent<NavMeshAgent>().SetDestination(queuePositions[i - 1].gameObject.transform.position);
                 }
             }
-            
-        }   
+
+        }
+    }
+
+    private void CheckCustomersServed()
+    {
+        if (customersServed >= GameManager.Instance.currentCustomers)
+        {
+            StartCoroutine(CheckCustomerAmount());
+        }
     }
     private float GenerateInterarrivalValue()
     {
         float lambda = ((100 + 25 * Mathf.Floor((GameManager.Instance.currentDay - 1) / 3f)) / GameManager.Instance.currentCustomers);
         float maxDeviationValue = 5 - 0.25f * GameManager.Instance.currentCustomers;
-        float randomValue = -Mathf.Log(1 - UnityEngine.Random.value) / lambda;
+        float randomValue = (-Mathf.Log(1 - Random.value) / lambda) * 1000;
         while (randomValue > lambda + maxDeviationValue || randomValue < lambda - maxDeviationValue)
         {
-            randomValue = -Mathf.Log(1 - UnityEngine.Random.value) / lambda;
+            randomValue = (-Mathf.Log(1 - Random.value) / lambda) * 1000;
         }
+        Debug.Log(randomValue);
         return randomValue;
     }
 }

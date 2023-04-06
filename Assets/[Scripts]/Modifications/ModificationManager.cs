@@ -82,10 +82,14 @@ public class ModificationManager : MonoBehaviour
 
     public void ResetBoard()
     {
+        List<GameObject> list = new List<GameObject>();
+        list.AddRange(options);
         foreach (GameObject obj in options)
         {
             Destroy(obj);
         }
+
+        options.Clear();
 
         foreach (GameObject obj in boardPositions)
         {
