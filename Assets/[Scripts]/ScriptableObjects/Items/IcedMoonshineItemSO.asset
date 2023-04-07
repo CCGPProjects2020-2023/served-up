@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bec520f46d6f3c49bd9148405033ffe, type: 3}
-  m_Name: IceCupItemSO
+  m_Name: IcedMoonshineItemSO
   m_EditorClassIdentifier: 
-  name: IceCup
-  icon: {fileID: 21300000, guid: 422c64c867fbb8f4ea51eeb535f4aeaf, type: 3}
-  prefab: {fileID: 7534426609065193362, guid: de25fa00a162fa94c9d5908761a82228, type: 3}
+  name: IcedMoonshine
+  icon: {fileID: 21300000, guid: fee031b5808992b4796bc35209e3ec08, type: 3}
+  prefab: {fileID: 905056260339507124, guid: 3c8e2dc8c297c464a8d6c01094d0f372, type: 3}
   isDestructable: 1

@@ -1,8 +1,7 @@
-#if UNITY_EDITOR
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
     public enum ImageFilterMode {
         Nearest = 0,
@@ -22,7 +21,7 @@ public class ScreenshotHandler : MonoBehaviour
         generator = FindObjectOfType<IngredientScreenShotGen>();
         myCamera.backgroundColor = Color.black;
     }
-    public IEnumerator onPostRender()
+    public IEnumerator OnPostRender()
     {
         yield return new WaitForEndOfFrame();
         if(takeScreenshotOnNextFrame)
@@ -61,7 +60,7 @@ public class ScreenshotHandler : MonoBehaviour
     private void TakeScreenshot(int width, int height){
         myCamera.targetTexture = RenderTexture.GetTemporary(width, height, 32);
         takeScreenshotOnNextFrame = true;
-        StartCoroutine(onPostRender());
+        StartCoroutine(OnPostRender());
     }
     public static void TakeScreenshot_Static(int width, int height)
     {
@@ -169,4 +168,3 @@ public class ScreenshotHandler : MonoBehaviour
         return newTexture;
 }
 }
-#endif
