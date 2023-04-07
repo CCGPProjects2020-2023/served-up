@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a23173bf52b3dcf40bc6ed165a97b670, type: 3}
-  m_Name: IcedWhiskeyRecipeSO
+  m_Name: Bucket_IcedMoonshineRecipeSO
   m_EditorClassIdentifier: 
-  input1: {fileID: 11400000, guid: cf37b00dab795ed478e1a81c42372b88, type: 2}
-  input2: {fileID: 11400000, guid: 83926af75c4d3de47b9305eebaf90d34, type: 2}
-  output: {fileID: 11400000, guid: 923d57814513edf4aa49bbc5a2311ad3, type: 2}
+  input1: {fileID: 11400000, guid: 873d398dda293bd40bcab86ea84d2646, type: 2}
+  input2: {fileID: 11400000, guid: b2ef98ac2b6cc8a4b94628305f392117, type: 2}
+  output: {fileID: 11400000, guid: d43cfe71ad8a530468bcb8efa02413c8, type: 2}
