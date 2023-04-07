@@ -134295,6 +134295,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceBucket
       objectReference: {fileID: 0}
+    - target: {fileID: 8099371937884860779, guid: dbc8ea6d58d16f540bae297756d02c10, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8103085480646074955, guid: dbc8ea6d58d16f540bae297756d02c10, type: 3}
       propertyPath: m_RootOrder
       value: 1
