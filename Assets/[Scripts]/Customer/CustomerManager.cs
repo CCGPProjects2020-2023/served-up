@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class CustomerManager : MonoBehaviour
 {
@@ -12,8 +14,15 @@ public class CustomerManager : MonoBehaviour
     public List<float> interarrivalTimes;
     public float customersServed;
 
-    private void Update()
+    [Header("Queue Patience")]
+    public float maxWaitTime = 90;
+    public float currentQueueTimer;
+    public float queueRecoveryTime = 10;
+
+    private void Start()
     {
+        currentQueueTimer = maxWaitTime;
+        StartCoroutine(Timer(QueuePatienceReached));
     }
     private void OnDayStarted()
     {
@@ -26,17 +35,61 @@ public class CustomerManager : MonoBehaviour
         }
         StartCoroutine(SpawnCustomers());
     }
-    private void OnEnable()
-    {
-        Events.onOrderCompleted.AddListener(OnOrderCompleted);
-        Events.onDayStarted.AddListener(OnDayStarted);
 
-    }
-    private void OnDisable()
+    #region Queue Patience
+    public IEnumerator Timer(Action actionToBeExecuted)
     {
-        Events.onOrderCompleted.RemoveListener(OnOrderCompleted);
-        Events.onDayStarted.RemoveListener(OnDayStarted);
+        while (true)
+        {
+            if (AmountOfCustomersInQueue() > 0)
+            {
+                //each customer in queue makes timer faster multiplies with itself caps at 5x faster
+                float queuersFactor = (float)Math.Pow(1.1, AmountOfCustomersInQueue());
+                if (queuersFactor > 5)
+                    queuersFactor = 5;
+                float timeChange = 1 * queuersFactor * Time.deltaTime;
+                currentQueueTimer -= timeChange;
+                if (currentQueueTimer < 0)
+                {
+                    actionToBeExecuted();
+                    yield break;
+                }
+            }
+            else
+            {
+                currentQueueTimer = maxWaitTime;
+            }
+            yield return null;
+        }
     }
+
+    public void QueuePatienceReached()
+    {
+        Events.onGameOver.Invoke();
+    }
+
+    public void RecoverQueueTime()
+    {
+        currentQueueTimer += queueRecoveryTime;
+        if (currentQueueTimer > maxWaitTime)
+            currentQueueTimer = maxWaitTime;
+    }
+
+    public int AmountOfCustomersInQueue()
+    {
+        int count = 0;
+        foreach (QueuePosition queue in queuePositions)
+        {
+            if (queue.customer)
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+    #endregion
+    #region Customer Spawning
     IEnumerator CheckCustomerAmount()
     {
         while (true)
@@ -65,12 +118,15 @@ public class CustomerManager : MonoBehaviour
         customersInScene.Add(customer);
         CheckPositions(customer);
     }
+    #endregion
+    #region Customer Queue Logic
     private void CheckPositions(GameObject customer)
     {
         foreach (Table table in tables)
         {
             if (table.customer == null)
             {
+                RecoverQueueTime();
                 table.customer = customer;
                 customer.GetComponent<CustomerAnimation>().table = table;
                 customer.GetComponent<CustomerAnimation>().isInQueue = false;
@@ -107,7 +163,7 @@ public class CustomerManager : MonoBehaviour
                     {
                         if (table.customer == null)
                         {
-
+                            RecoverQueueTime();
                             table.customer = currentCustomer;
                             currentCustomer.GetComponent<CustomerAnimation>().table = table;
                             currentCustomer.GetComponent<CustomerAnimation>().isInQueue = false;
@@ -127,6 +183,7 @@ public class CustomerManager : MonoBehaviour
 
         }
     }
+    #endregion
 
     private void CheckCustomersServed()
     {
@@ -146,5 +203,17 @@ public class CustomerManager : MonoBehaviour
         }
         Debug.Log(randomValue);
         return randomValue;
+    }
+
+    private void OnEnable()
+    {
+        Events.onOrderCompleted.AddListener(OnOrderCompleted);
+        Events.onDayStarted.AddListener(OnDayStarted);
+
+    }
+    private void OnDisable()
+    {
+        Events.onOrderCompleted.RemoveListener(OnOrderCompleted);
+        Events.onDayStarted.RemoveListener(OnDayStarted);
     }
 }

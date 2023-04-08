@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     }
     public int startingCustomers;
     public int currentCustomers;
-    public float customerModifier; // 
+    public float customerModifier;
     public int startingDay;
     public int currentDay;
 

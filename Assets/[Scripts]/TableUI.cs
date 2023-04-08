@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,7 +24,7 @@ public class TableUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(table.currentState == TableState.Service || table.currentState == TableState.Delivery)
+        if (table.currentState == TableState.Service || table.currentState == TableState.Delivery)
         {
             fillAmount = table.timer / table.currentTimer;
             barImage.fillAmount = fillAmount;
@@ -74,7 +71,7 @@ public class TableUI : MonoBehaviour
     private void HideBar()
     {
         barImage.gameObject.SetActive(false);
-        backgroundImage.gameObject.SetActive(false);    
+        backgroundImage.gameObject.SetActive(false);
     }
 
     private void ShowBar()

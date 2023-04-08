@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -8,7 +6,7 @@ public class PlayerLook : MonoBehaviour
     public Camera camera;
     public Transform orientation;
 
-    private float xRotation = 0f, yRotation;
+    private float xRotation, yRotation;
 
     public float xSensitivity = 30f;
 
@@ -18,6 +16,7 @@ public class PlayerLook : MonoBehaviour
     {
         camera = Camera.main;
         Cursor.lockState = CursorLockMode.Locked;
+        yRotation = 134.392f;
     }
 
 
