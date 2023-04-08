@@ -3740,8 +3740,8 @@ GameObject:
   - component: {fileID: 8076279732764519319}
   - component: {fileID: 8085932281332409023}
   - component: {fileID: 8108175178953988881}
-  - component: {fileID: 6950399046868125576}
-  m_Layer: 0
+  - component: {fileID: 1326630122}
+  m_Layer: 3
   m_Name: IceBucket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3830,7 +3830,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43333538672262466, guid: ecb5bfc0abb636144ac4b998f1cf3f53, type: 2}
---- !u!114 &6950399046868125576
+--- !u!114 &1326630122
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3839,10 +3839,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8099371937884860779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fb5852c10479e14ebf7edaec55191ca, type: 3}
+  m_Script: {fileID: 11500000, guid: eddf1a22b3c86674ba001aca176d097a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemPos: {fileID: 6434524220919090762}
+  item: {fileID: 0}
+  selectedCounterVisual: {fileID: 3819245925808000960}
   itemSO: {fileID: 11400000, guid: 873d398dda293bd40bcab86ea84d2646, type: 2}
+  inputItem: {fileID: 5323482738442007081, guid: ee1ef3f9c5a7fa2489e69169cd48fc41, type: 3}
+  outputItem: {fileID: 7534426609065193362, guid: de25fa00a162fa94c9d5908761a82228, type: 3}
 --- !u!1 &8157105634073060508
 GameObject:
   m_ObjectHideFlags: 0

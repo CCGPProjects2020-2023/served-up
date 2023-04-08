@@ -92,10 +92,10 @@ public class PlayerController : MonoBehaviour
 
                 if (heldItem && cupHolder.maxCups > cupHolder.currentCups)
                 {
-                    
+
                     if (heldItem.GetComponent<ItemSOHolder>().itemSO == cupHolder.emptyCup.GetComponent<ItemSOHolder>().itemSO)
                     {
-                        
+
                         cupHolder.currentCups++;
                         cupHolder.UpdateCups();
                         Destroy(heldItem);
@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
             //WASHING CUPS
-            else  if (hitObject.GetComponent<ItemConverter>())
+            else if (hitObject.GetComponent<ItemConverter>())
             {
                 ItemConverter itemConverter = hitObject.GetComponent<ItemConverter>();
 
@@ -126,22 +126,18 @@ public class PlayerController : MonoBehaviour
                     GameObject outputItem = Instantiate(itemConverter.outputItem, heldItemPos.transform);
                     outputItem.layer = 0;
                     heldItem = outputItem;
-                    
-                    
+
+
 
                 }
             }
 
-            else if (hitObject.GetComponent<IceBucket>() && heldItem)
+            else if (hitObject.GetComponent<ItemConverterAdvanced>() && heldItem)
             {
-                //Debug.Log("IINTEERACT ICEBUCKET");
-                IceBucket iceBucket = hitObject.GetComponent<IceBucket>();
-
+                ItemConverterAdvanced itemConverterAdvanced = hitObject.GetComponent<ItemConverterAdvanced>();
                 ItemSO heldItemSO = heldItem.GetComponent<ItemSOHolder>().itemSO;
-                //Debug.Log(heldItemSO.name);
-                ItemSO iceBucketSO = iceBucket.iceBucketSO;
-                //Debug.Log(iceBucketSO.name);
-                ItemSO outputItem = recipeSystem.GetRecipeOutput(iceBucketSO, heldItemSO);
+                ItemSO converterItemSO = itemConverterAdvanced.itemSO;
+                ItemSO outputItem = recipeSystem.GetRecipeOutput(converterItemSO, heldItemSO);
 
                 Debug.Log(outputItem.name);
                 if (heldItem)
@@ -152,8 +148,6 @@ public class PlayerController : MonoBehaviour
                     GameObject outputItem1 = Instantiate(outputItem.prefab, heldItemPos.transform);
                     outputItem1.layer = 0;
                     heldItem = outputItem1;
-                    
-
                 }
             }
 
