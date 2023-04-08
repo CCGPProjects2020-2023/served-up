@@ -303,6 +303,13 @@ MonoBehaviour:
   currentState: 0
   currentTimer: 0
   timer: 0
+  orderCompleteSound:
+    Guid:
+      Data1: -2144765065
+      Data2: 1330409548
+      Data3: -1995240295
+      Data4: -1387147183
+    Path: event:/OrderComplete
 --- !u!1 &1692713681187058546
 GameObject:
   m_ObjectHideFlags: 0

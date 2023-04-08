@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -17,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public Transform orientation;
     private Vector3 moveDir;
 
+    private EventInstance playerFootsteps;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -34,6 +37,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         recipeSystem = RecipeSystem.Instance;
+
+        playerFootsteps = AudioManager.Instance.CreateInstance(FMODEvents.Instance.playerFootsteps);
     }
 
     // Update is called once per frame
@@ -47,6 +52,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         SpeedControl();
+        UpdateSound();
     }
 
     private void ShootRaycast()
@@ -291,5 +297,22 @@ public class PlayerController : MonoBehaviour
     private void SetSelectedObject(GameObject obj)
     {
         Events.onObjectSelectedChanged.Invoke(obj);
+    }
+
+    private void UpdateSound()
+    {
+        if (rb.velocity.magnitude > 0.1f)
+        {
+            PLAYBACK_STATE playbackState;
+            playerFootsteps.getPlaybackState(out playbackState);
+            if (playbackState == PLAYBACK_STATE.STOPPED)
+            {
+                playerFootsteps.start();
+            }
+        }
+        else
+        {
+            playerFootsteps.stop(STOP_MODE.IMMEDIATE);
+        }
     }
 }

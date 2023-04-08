@@ -14,6 +14,7 @@ public class Table : Placeable
     public TableState currentState;
     public float currentTimer;
     public float timer;
+
     private void Start()
     {
         currentState = TableState.None;
@@ -27,6 +28,7 @@ public class Table : Placeable
             item = null;
             StopAllCoroutines();
             currentState = TableState.Eating;
+            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.orderCompleteSound, transform.position);
             customer.GetComponent<CustomerAnimation>().StartDrinkingAnim();
         }
     }
