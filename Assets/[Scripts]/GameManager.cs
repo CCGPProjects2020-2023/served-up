@@ -33,6 +33,11 @@ public class GameManager : MonoBehaviour
     {
         startingDay = 1;
         currentDay = startingDay;
+    }
+
+    public void StartGame()
+    {
+        FindObjectOfType<PlayerController>(true).gameObject.SetActive(true);
         currentCustomers = CalculateCustomerAmount();
         Events.onDayStarted.Invoke();
     }
