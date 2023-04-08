@@ -7059,6 +7059,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a1400fd042da7584bb872032f1f8f99c, type: 2}
   - {fileID: 11400000, guid: 8553a948dec26ce459ab5a542a5d8ef2, type: 2}
   - {fileID: 11400000, guid: 783b5db28be92f94aafff8e69144d5b8, type: 2}
+  - {fileID: 11400000, guid: b42f7078e697c3b4c9d4bd35db16ad42, type: 2}
+  - {fileID: 11400000, guid: 8a48633224f31594a960c34cb1137b0f, type: 2}
+  - {fileID: 11400000, guid: 2705240f88aad9e4a8501a3202af2fe0, type: 2}
+  - {fileID: 11400000, guid: 5a81cb3efa81e5b4b83e59229537e0f3, type: 2}
 --- !u!4 &792310958
 Transform:
   m_ObjectHideFlags: 0
@@ -11853,7 +11857,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8099371937884860779, guid: dbc8ea6d58d16f540bae297756d02c10, type: 3}
   m_PrefabInstance: {fileID: 648151747}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1326630117
+--- !u!114 &1326630122
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11862,12 +11866,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1326630116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90204e101fb12d442a45efdfa2d4de63, type: 3}
+  m_Script: {fileID: 11500000, guid: eddf1a22b3c86674ba001aca176d097a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemPos: {fileID: 886723742}
   item: {fileID: 0}
   selectedCounterVisual: {fileID: 816886445}
+  iceBucketSO: {fileID: 11400000, guid: 873d398dda293bd40bcab86ea84d2646, type: 2}
   inputItem: {fileID: 5323482738442007081, guid: ee1ef3f9c5a7fa2489e69169cd48fc41, type: 3}
   outputItem: {fileID: 7534426609065193362, guid: de25fa00a162fa94c9d5908761a82228, type: 3}
 --- !u!1 &1328224763

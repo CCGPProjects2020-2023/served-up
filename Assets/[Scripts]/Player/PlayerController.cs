@@ -132,6 +132,31 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
+            else if (hitObject.GetComponent<IceBucket>() && heldItem)
+            {
+                //Debug.Log("IINTEERACT ICEBUCKET");
+                IceBucket iceBucket = hitObject.GetComponent<IceBucket>();
+
+                ItemSO heldItemSO = heldItem.GetComponent<ItemSOHolder>().itemSO;
+                //Debug.Log(heldItemSO.name);
+                ItemSO iceBucketSO = iceBucket.iceBucketSO;
+                //Debug.Log(iceBucketSO.name);
+                ItemSO outputItem = recipeSystem.GetRecipeOutput(iceBucketSO, heldItemSO);
+
+                Debug.Log(outputItem.name);
+                if (heldItem)
+                {
+                    Debug.Log(outputItem.name);
+                    Destroy(heldItem);
+                    heldItem = null;
+                    GameObject outputItem1 = Instantiate(outputItem.prefab, heldItemPos.transform);
+                    outputItem1.layer = 0;
+                    heldItem = outputItem1;
+                    
+
+                }
+            }
+
             else if (hitObject.GetComponent<PlaceableButton>())
             {
                 ModificationManager.Instance.LockInModifications();
