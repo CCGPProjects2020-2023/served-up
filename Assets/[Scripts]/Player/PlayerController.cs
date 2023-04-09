@@ -127,7 +127,8 @@ public class PlayerController : MonoBehaviour
 
                 if (heldItem && heldItem.GetComponent<ItemSOHolder>().itemSO == itemConverter.inputItem.GetComponent<ItemSOHolder>().itemSO)
                 {
-                    AudioManager.Instance.PlayOneShot(itemConverter.eventReference, itemConverter.transform.position);
+                    if (!itemConverter.eventReference.IsNull)
+                        AudioManager.Instance.PlayOneShot(itemConverter.eventReference, itemConverter.transform.position);
                     Destroy(heldItem);
                     heldItem = null;
                     GameObject outputItem = Instantiate(itemConverter.outputItem, heldItemPos.transform);
@@ -145,7 +146,8 @@ public class PlayerController : MonoBehaviour
 
                 if (heldItem && outputItem)
                 {
-                    AudioManager.Instance.PlayOneShot(itemConverterAdvanced.eventReference, itemConverterAdvanced.transform.position);
+                    if (!itemConverterAdvanced.eventReference.IsNull)
+                        AudioManager.Instance.PlayOneShot(itemConverterAdvanced.eventReference, itemConverterAdvanced.transform.position);
                     Destroy(heldItem);
                     heldItem = null;
                     GameObject outputItem1 = Instantiate(outputItem.prefab, heldItemPos.transform);
