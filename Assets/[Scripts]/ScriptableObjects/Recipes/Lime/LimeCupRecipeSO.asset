@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a23173bf52b3dcf40bc6ed165a97b670, type: 3}
   m_Name: LimeCupRecipeSO
   m_EditorClassIdentifier: 
-  input1: {fileID: 0}
-  input2: {fileID: 0}
-  output: {fileID: 0}
+  input1: {fileID: 11400000, guid: 83926af75c4d3de47b9305eebaf90d34, type: 2}
+  input2: {fileID: 11400000, guid: 9ccfd49a464260047ae5b1e53ea57829, type: 2}
+  output: {fileID: 11400000, guid: 7b3a064082f2e754cbbfc6a14db6ff3e, type: 2}

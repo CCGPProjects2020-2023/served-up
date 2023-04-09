@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a23173bf52b3dcf40bc6ed165a97b670, type: 3}
   m_Name: Bucket_LimeIcedMoonshineRecipeSO
   m_EditorClassIdentifier: 
-  input1: {fileID: 0}
-  input2: {fileID: 0}
-  output: {fileID: 0}
+  input1: {fileID: 11400000, guid: 873d398dda293bd40bcab86ea84d2646, type: 2}
+  input2: {fileID: 11400000, guid: 80cee9d3fceba8541bef96cbc32836b9, type: 2}
+  output: {fileID: 11400000, guid: 867dba8e724e6de42a2db24da39f689d, type: 2}

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a23173bf52b3dcf40bc6ed165a97b670, type: 3}
   m_Name: Box_LimeBeerRecipeSO
   m_EditorClassIdentifier: 
-  input1: {fileID: 0}
-  input2: {fileID: 0}
-  output: {fileID: 0}
+  input1: {fileID: 11400000, guid: 9ccfd49a464260047ae5b1e53ea57829, type: 2}
+  input2: {fileID: 11400000, guid: af253633b8e033a48ba3ee152dd10db1, type: 2}
+  output: {fileID: 11400000, guid: 00c3aab31de9f5d4bb1c742739a9c610, type: 2}

@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb5852c10479e14ebf7edaec55191ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSO: {fileID: 11400000, guid: b2ef98ac2b6cc8a4b94628305f392117, type: 2}
+  itemSO: {fileID: 11400000, guid: 80cee9d3fceba8541bef96cbc32836b9, type: 2}
 --- !u!64 &1923211428276676687
 MeshCollider:
   m_ObjectHideFlags: 0
