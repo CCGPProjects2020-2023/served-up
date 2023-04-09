@@ -19,5 +19,5 @@ MonoBehaviour:
   - + 5% less customers
   negatives:
   - '- order variety'
-  recipe: {fileID: 11400000, guid: 26165e8602ad3be4293921e4cd7fda16, type: 2}
-  customerModifier: 0.05
+  recipe: {fileID: 11400000, guid: 640c3c0fd878ea343acca01479efd8b4, type: 2}
+  decreaseAmount: 5
