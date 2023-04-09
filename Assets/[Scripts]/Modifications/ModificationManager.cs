@@ -51,7 +51,10 @@ public class ModificationManager : MonoBehaviour
 
     private void Start()
     {
-
+        foreach (ModificationSO modification in enabledModifications)
+        {
+            modification.Apply();
+        }
     }
 
     public void LockInModifications()

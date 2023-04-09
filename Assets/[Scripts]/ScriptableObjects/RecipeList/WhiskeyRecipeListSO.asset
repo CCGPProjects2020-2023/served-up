@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a011fbae617cd478d8b8d0f38e3d33, type: 3}
+  m_Name: WhiskeyRecipeListSO
+  m_EditorClassIdentifier: 
+  baseRecipe: {fileID: 11400000, guid: cd1ae7fd28ac4b74b991b91401ec8ca0, type: 2}
+  variations:
+  - {fileID: 11400000, guid: 8b6cf2cef937eca4bb1c0fa1787fcf3a, type: 2}
+  - {fileID: 11400000, guid: ae3f0a94663a85e4292713737deebc21, type: 2}
+  - {fileID: 11400000, guid: ca5d1792f3b350241ad6eacae2afa9c1, type: 2}
+  - {fileID: 11400000, guid: fe034afc8b0e2b744b00ce3dfb0399ae, type: 2}
+  - {fileID: 11400000, guid: 5a81cb3efa81e5b4b83e59229537e0f3, type: 2}
