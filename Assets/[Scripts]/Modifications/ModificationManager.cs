@@ -56,25 +56,29 @@ public class ModificationManager : MonoBehaviour
 
     public void LockInModifications()
     {
-        Placeable placeable = chosenModification.GetComponent<Placeable>();
-        if (placeable.item == null)
+        if (availableModifications.Count > 0)
         {
-            return;
-        }
 
-        ModificationSO chosenMod = placeable.item.GetComponent<ModificationSOHolder>().modificationSO;
-
-
-        foreach (GameObject obj in options)
-        {
-            if (chosenMod != obj.GetComponent<ModificationSOHolder>().modificationSO)
+            Placeable placeable = chosenModification.GetComponent<Placeable>();
+            if (placeable.item == null)
             {
-                availableModifications.Add(obj.GetComponent<ModificationSOHolder>().modificationSO);
+                return;
             }
-        }
 
-        chosenMod.Apply();
-        enabledModifications.Add(chosenMod);
+            ModificationSO chosenMod = placeable.item.GetComponent<ModificationSOHolder>().modificationSO;
+
+
+            foreach (GameObject obj in options)
+            {
+                if (chosenMod != obj.GetComponent<ModificationSOHolder>().modificationSO)
+                {
+                    availableModifications.Add(obj.GetComponent<ModificationSOHolder>().modificationSO);
+                }
+            }
+
+            chosenMod.Apply();
+            enabledModifications.Add(chosenMod);
+        }
         ResetBoard();
         button.SetActive(false);
         GameManager.Instance.EndDay();
