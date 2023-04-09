@@ -145,6 +145,23 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
+            //Garbage Can
+            else if (hitObject.GetComponent<GarbageCan>())
+            {
+                GarbageCan garbageCan = hitObject.GetComponent<GarbageCan>();
+
+                if (heldItem && heldItem.gameObject.tag != "Bottle")
+                {
+                    if (!garbageCan.eventReference.IsNull)
+                        AudioManager.Instance.PlayOneShot(garbageCan.eventReference, garbageCan.transform.position);
+                    Destroy(heldItem);
+                    heldItem = null;
+                    GameObject outputItem = Instantiate(garbageCan.outputItem, heldItemPos.transform);
+                    outputItem.layer = 0;
+                    heldItem = outputItem;
+                }
+            }
+
             else if (hitObject.GetComponent<ItemConverterAdvanced>() && heldItem)
             {
                 ItemConverterAdvanced itemConverterAdvanced = hitObject.GetComponent<ItemConverterAdvanced>();
