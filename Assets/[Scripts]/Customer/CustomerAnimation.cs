@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEditor.Progress;
 
 public class CustomerAnimation : MonoBehaviour
 {
@@ -119,6 +117,7 @@ public class CustomerAnimation : MonoBehaviour
     public void LiftDrinkAnimFinished()
     {
         anim.SetBool("isDrinking", true);
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.drinkingSound, transform.position);
         StartCoroutine(table.Timer(GameManager.Instance.eatingTime, this.DrinkingComplete));
     }
     public void DrinkingComplete()
@@ -130,7 +129,7 @@ public class CustomerAnimation : MonoBehaviour
     {
         table.DrinkingComplete();
     }
-    
+
 
     public void StartDrinkingAnim()
     {
@@ -138,6 +137,7 @@ public class CustomerAnimation : MonoBehaviour
         table.tempItem.transform.localPosition = Vector3.zero;
         anim.SetBool("isSitting", false);
         anim.SetTrigger("TrLift");
+
     }
     IEnumerator DestoryCustomer()
     {

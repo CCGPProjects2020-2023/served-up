@@ -124,6 +124,7 @@ public class PlayerController : MonoBehaviour
             else if (hitObject.GetComponent<ItemConverter>())
             {
                 ItemConverter itemConverter = hitObject.GetComponent<ItemConverter>();
+                AudioManager.Instance.PlayOneShot(itemConverter.eventReference, itemConverter.transform.position);
 
                 if (heldItem && heldItem.GetComponent<ItemSOHolder>().itemSO == itemConverter.inputItem.GetComponent<ItemSOHolder>().itemSO)
                 {
@@ -141,6 +142,7 @@ public class PlayerController : MonoBehaviour
             else if (hitObject.GetComponent<ItemConverterAdvanced>() && heldItem)
             {
                 ItemConverterAdvanced itemConverterAdvanced = hitObject.GetComponent<ItemConverterAdvanced>();
+                AudioManager.Instance.PlayOneShot(itemConverterAdvanced.eventReference, itemConverterAdvanced.transform.position);
                 ItemSO heldItemSO = heldItem.GetComponent<ItemSOHolder>().itemSO;
                 ItemSO converterItemSO = itemConverterAdvanced.itemSO;
                 ItemSO outputItem = recipeSystem.GetRecipeOutput(converterItemSO, heldItemSO);
@@ -179,6 +181,7 @@ public class PlayerController : MonoBehaviour
                 //item placed on placeable
                 if (!placeable.item && heldItem)
                 {
+                    AudioManager.Instance.PlayOneShot(FMODEvents.Instance.pickupSound, placeable.transform.position);
                     placeable.item = heldItem;
                     placeable.item.transform.SetParent(placeable.itemPos.transform, true);
                     placeable.item.transform.localPosition = Vector3.zero;
@@ -189,6 +192,7 @@ public class PlayerController : MonoBehaviour
                 //item picked up from placeable
                 else if (placeable.item && !heldItem)
                 {
+                    AudioManager.Instance.PlayOneShot(FMODEvents.Instance.pickupSound, placeable.transform.position);
                     placeable.item.transform.SetParent(heldItemPos.transform);
                     heldItem = placeable.item;
                     heldItem.transform.localPosition = Vector3.zero;
@@ -206,6 +210,7 @@ public class PlayerController : MonoBehaviour
                     ItemSO outputItem = recipeSystem.GetRecipeOutput(placeableItemSO, heldItemSO);
                     if (outputItem != null)
                     {
+                        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.fillCupSound, placeable.transform.position);
                         if (placeableItemSO.isDestructable && !heldItemSO.isDestructable)
                         {
                             Destroy(placeable.item);
