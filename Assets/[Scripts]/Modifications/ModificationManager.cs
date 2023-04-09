@@ -29,16 +29,19 @@ public class ModificationManager : MonoBehaviour
     public GameObject modificationPrefab;
     public List<ModificationSO> enabledModifications;
     public GameObject button;
+    private bool modLeft;
 
     private List<GameObject> options;
 
     public void GenerateModificationOptions()
     {
         button.SetActive(true);
+        modLeft = false;
         foreach (GameObject pos in boardPositions)
         {
             if (availableModifications.Count > 0)
             {
+                modLeft = true;
                 Placeable placeable = pos.GetComponent<Placeable>();
                 GameObject modObj = Instantiate(modificationPrefab, placeable.itemPos.transform);
                 options.Add(modObj);
@@ -59,7 +62,7 @@ public class ModificationManager : MonoBehaviour
 
     public void LockInModifications()
     {
-        if (availableModifications.Count > 0)
+        if (modLeft)
         {
 
             Placeable placeable = chosenModification.GetComponent<Placeable>();
