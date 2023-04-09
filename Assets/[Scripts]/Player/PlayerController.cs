@@ -17,12 +17,13 @@ public class PlayerController : MonoBehaviour
     PlayerLook playerLook;
     public Transform orientation;
     private Vector3 moveDir;
-
+    private PauseUI pauseUI;
     private EventInstance playerFootsteps;
 
     // Start is called before the first frame update
     private void Awake()
     {
+        pauseUI = GetComponentInChildren<PauseUI>();
         cam = GetComponent<PlayerLook>().camera;
         playerLook = GetComponent<PlayerLook>();
         rb = GetComponent<Rigidbody>();
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
         input.Player.Movement.canceled += ctx => move = Vector2.zero;
         input.Player.Interact.performed += ctx => Interact();
         input.Player.Pickup.performed += ctx => Pickup();
+        input.Player.Pause.performed += ctx => pauseUI.TogglePause();
     }
 
     void Start()
@@ -44,15 +46,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.isPaused)
+            return;
         ShootRaycast();
         playerLook.Look(input.Player.Look.ReadValue<Vector2>());
     }
 
     private void FixedUpdate()
     {
+        UpdateSound();
+        if (GameManager.Instance.isPaused)
+            return;
         Move();
         SpeedControl();
-        UpdateSound();
     }
 
     private void ShootRaycast()

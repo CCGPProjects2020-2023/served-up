@@ -15,6 +15,7 @@ public class PlayerLook : MonoBehaviour
     void Start()
     {
         camera = Camera.main;
+        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         yRotation = 134.392f;
     }

@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public int increaseCustomerMod;
     public int startingDay;
     public int currentDay;
+    public bool isPaused;
 
     [Header("Timers")]
     public float thinkingTime = 2.5f;
@@ -85,6 +86,22 @@ public class GameManager : MonoBehaviour
     public float CalculateDayLength()
     {
         return 100 + 25 * Mathf.Floor((currentDay - 1) / 3f);
+    }
+
+    public void PauseGame()
+    {
+        isPaused = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        isPaused = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1f;
     }
     private void OnEnable()
     {
