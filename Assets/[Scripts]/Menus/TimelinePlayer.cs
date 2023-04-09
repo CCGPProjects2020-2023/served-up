@@ -13,7 +13,6 @@ public class TimelinePlayer : MonoBehaviour
         timeline = GetComponent<PlayableDirector>();
         timeline.played += Director_Played;
         //timeline.stopped += Director_Stopped;
-
     }
 
     private void Director_Played(PlayableDirector obj)

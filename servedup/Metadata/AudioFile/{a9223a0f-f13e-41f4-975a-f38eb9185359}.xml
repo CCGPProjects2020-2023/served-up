@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{a9223a0f-f13e-41f4-975a-f38eb9185359}">
+		<property name="assetPath">
+			<value>SFX/206016__junkfood2121__liquid-fill-glass.flac</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.9853125</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f17523aa-e7d8-4d20-832a-69ce48bf4449}</destination>
+		</relationship>
+	</object>
+</objects>
