@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        startingDay = 1;
+        startingDay = 10;
         currentDay = startingDay;
         customerModifier = 1;
     }

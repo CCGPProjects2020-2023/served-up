@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb5852c10479e14ebf7edaec55191ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSO: {fileID: 11400000, guid: 95c2e97825d90a241a915503c3aa0339, type: 2}
+  itemSO: {fileID: 11400000, guid: 482b4fab10374334aa47cea38f10c882, type: 2}
 --- !u!64 &3420134040135984696
 MeshCollider:
   m_ObjectHideFlags: 0
