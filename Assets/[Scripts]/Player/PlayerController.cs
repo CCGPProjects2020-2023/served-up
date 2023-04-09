@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
         input.Player.Movement.canceled += ctx => move = Vector2.zero;
         input.Player.Interact.performed += ctx => Interact();
         input.Player.Pickup.performed += ctx => Pickup();
+        AllowMovement();
     }
 
     void Start()
@@ -318,8 +319,12 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    public void StopMovement()
+    public void PreventMovement()
     {
-        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+    }
+    public void AllowMovement()
+    {
+        rb.constraints &= ~RigidbodyConstraints.FreezePosition;
     }
 }
