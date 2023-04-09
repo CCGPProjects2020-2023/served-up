@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bec520f46d6f3c49bd9148405033ffe, type: 3}
+  m_Name: LimeIcedCupItemSO
+  m_EditorClassIdentifier: 
+  name: LimeIcedCup
+  icon: {fileID: 21300000, guid: 6c46264b6a9559149b74fa18b4abe4c3, type: 3}
+  prefab: {fileID: 4223222779324903515, guid: e8347ccc8c779f2408b2ed9a13d74a30, type: 3}
+  isDestructable: 1
