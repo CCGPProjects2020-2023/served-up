@@ -221,7 +221,7 @@ public class CustomerManager : MonoBehaviour
     }
     private float GenerateInterarrivalValue()
     {
-        float lambda = ((100 + 25 * Mathf.Floor((GameManager.Instance.currentDay - 1) / 3f)) / GameManager.Instance.currentCustomers);
+        float lambda = GameManager.Instance.CalculateDayLength() / GameManager.Instance.currentCustomers);
         float maxDeviationValue = 5 - 0.25f * GameManager.Instance.currentCustomers;
         float randomValue = (-Mathf.Log(1 - Random.value) / lambda) * 1000;
         while (randomValue > lambda + maxDeviationValue || randomValue < lambda - maxDeviationValue)
