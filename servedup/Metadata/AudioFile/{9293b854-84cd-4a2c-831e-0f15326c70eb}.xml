@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{9293b854-84cd-4a2c-831e-0f15326c70eb}">
+		<property name="assetPath">
+			<value>SFX/Puzzle/Menu Navigate 2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.709342403628118</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f17523aa-e7d8-4d20-832a-69ce48bf4449}</destination>
+		</relationship>
+	</object>
+</objects>

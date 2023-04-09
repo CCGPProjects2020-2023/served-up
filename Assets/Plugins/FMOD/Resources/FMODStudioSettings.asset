@@ -350,10 +350,10 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../../../Documents/FMOD Studio/servedup/servedup.fspro
-  sourceBankPath: ../../../../Documents/FMOD Studio/servedup/Build
+  sourceProjectPath: servedup/servedup.fspro
+  sourceBankPath: servedup/Build
   sourceBankPathUnformatted: 
-  BankRefreshCooldown: 5
+  BankRefreshCooldown: 1
   ShowBankRefreshWindow: 1
   AutomaticEventLoading: 1
   BankLoadType: 0

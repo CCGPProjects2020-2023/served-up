@@ -4,13 +4,15 @@ using UnityEngine.Playables;
 
 public class MenuUI : MonoBehaviour
 {
+    [SerializeField] private GameObject menuCanvas;
     [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject menuCamera;
     [SerializeField] private PlayableDirector timeline;
     public void PlayGame()
     {
         StartCoroutine(StartTimeline());
-        mainMenu.SetActive(false);
+        menuCanvas.SetActive(false);
     }
 
     IEnumerator StartTimeline()
@@ -26,5 +28,11 @@ public class MenuUI : MonoBehaviour
             }
             yield return null;
         }
+    }
+
+    public void ToggleSettingsMenu()
+    {
+        settingsMenu.SetActive(!settingsMenu.activeSelf);
+        mainMenu.SetActive(!mainMenu.activeSelf);
     }
 }

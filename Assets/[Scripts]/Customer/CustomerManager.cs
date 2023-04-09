@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -23,6 +24,34 @@ public class CustomerManager : MonoBehaviour
     {
         currentQueueTimer = maxWaitTime;
         StartCoroutine(Timer(QueuePatienceReached));
+    }
+
+    private void Update()
+    {
+        CalculateMusicTempo();
+    }
+
+    private void CalculateMusicTempo()
+    {
+        //get table timer ratios
+        List<float> tableRatios = new List<float>();
+        foreach (Table table in tables)
+        {
+            if (table.currentTimer == 0 || table.currentState == TableState.Thinking || table.currentState == TableState.Eating)
+                continue;
+            tableRatios.Add(table.timer / table.currentTimer);
+        }
+        float minTableRatio = 1;
+        if (tableRatios.Count > 0)
+            minTableRatio = tableRatios.Min();
+
+        float queueRatio = currentQueueTimer / maxWaitTime;
+
+        float minRatio = Math.Min(minTableRatio, queueRatio);
+
+        Debug.Log(minRatio);
+
+        AudioManager.Instance.SetTempoParameter("tempo", 1 - minRatio);
     }
     private void OnDayStarted()
     {

@@ -28,12 +28,12 @@ public class Table : Placeable
             item = null;
             StopAllCoroutines();
             currentState = TableState.Eating;
-            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.orderCompleteSound, transform.position);
             customer.GetComponent<CustomerAnimation>().StartDrinkingAnim();
         }
     }
     private void OrderComplete()
     {
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.orderCompleteSound, transform.position);
         Destroy(tempItem);
         tempItem = null;
         order = null;
