@@ -13,7 +13,6 @@ public class ModificationManager : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(this.gameObject);
         }
 
         availableModifications = new List<ModificationSO>();
@@ -37,6 +36,8 @@ public class ModificationManager : MonoBehaviour
     {
         button.SetActive(true);
         modLeft = false;
+        if (GameManager.Instance.currentDay % 2 != 0)
+            return;
         foreach (GameObject pos in boardPositions)
         {
             if (availableModifications.Count > 0)

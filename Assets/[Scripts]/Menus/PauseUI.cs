@@ -33,6 +33,7 @@ public class PauseUI : MonoBehaviour
 
     public void ReloadScene()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
