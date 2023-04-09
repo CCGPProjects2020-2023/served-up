@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
     private int CalculateCustomerAmount()
     {
         customerModifier = (float)(Mathf.Pow(0.99f, decreaseCustomerMod) + 0.99 - Mathf.Pow(0.99f, increaseCustomerMod));
-        float baseMultiplier = 1f;
+        float baseMultiplier = 1.15f;
         float courseAmount = 1.25f;
         float dayModifier = currentDay switch
         {
