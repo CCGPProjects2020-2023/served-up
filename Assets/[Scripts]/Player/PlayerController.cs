@@ -315,4 +315,9 @@ public class PlayerController : MonoBehaviour
             playerFootsteps.stop(STOP_MODE.IMMEDIATE);
         }
     }
+    
+    public void StopMovement()
+    {
+        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+    }
 }

@@ -27,8 +27,6 @@ public class GameManager : MonoBehaviour
     public float deliveryTime = 90;
     public float eatingTime = 3;
 
-
-
     private void Start()
     {
         startingDay = 1;
