@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
 
     public float CalculateDayLength()
     {
-        return 100 + 25 * Mathf.Floor((currentDay - 1) / 3f);
+        return 50 + 25 * Mathf.Floor((currentDay - 1) / 3f);
     }
 
     public void PauseGame()
