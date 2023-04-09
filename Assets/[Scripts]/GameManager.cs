@@ -90,18 +90,18 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        isPaused = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
+        isPaused = true;
     }
 
     public void ResumeGame()
     {
-        isPaused = false;
+        Time.timeScale = 1f;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        Time.timeScale = 1f;
+        isPaused = false;
     }
     private void OnEnable()
     {
