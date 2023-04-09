@@ -124,33 +124,28 @@ public class PlayerController : MonoBehaviour
             else if (hitObject.GetComponent<ItemConverter>())
             {
                 ItemConverter itemConverter = hitObject.GetComponent<ItemConverter>();
-                AudioManager.Instance.PlayOneShot(itemConverter.eventReference, itemConverter.transform.position);
 
                 if (heldItem && heldItem.GetComponent<ItemSOHolder>().itemSO == itemConverter.inputItem.GetComponent<ItemSOHolder>().itemSO)
                 {
+                    AudioManager.Instance.PlayOneShot(itemConverter.eventReference, itemConverter.transform.position);
                     Destroy(heldItem);
                     heldItem = null;
                     GameObject outputItem = Instantiate(itemConverter.outputItem, heldItemPos.transform);
                     outputItem.layer = 0;
                     heldItem = outputItem;
-
-
-
                 }
             }
 
             else if (hitObject.GetComponent<ItemConverterAdvanced>() && heldItem)
             {
                 ItemConverterAdvanced itemConverterAdvanced = hitObject.GetComponent<ItemConverterAdvanced>();
-                AudioManager.Instance.PlayOneShot(itemConverterAdvanced.eventReference, itemConverterAdvanced.transform.position);
                 ItemSO heldItemSO = heldItem.GetComponent<ItemSOHolder>().itemSO;
                 ItemSO converterItemSO = itemConverterAdvanced.itemSO;
                 ItemSO outputItem = recipeSystem.GetRecipeOutput(converterItemSO, heldItemSO);
 
-                Debug.Log(outputItem.name);
-                if (heldItem)
+                if (heldItem && outputItem)
                 {
-                    Debug.Log(outputItem.name);
+                    AudioManager.Instance.PlayOneShot(itemConverterAdvanced.eventReference, itemConverterAdvanced.transform.position);
                     Destroy(heldItem);
                     heldItem = null;
                     GameObject outputItem1 = Instantiate(outputItem.prefab, heldItemPos.transform);

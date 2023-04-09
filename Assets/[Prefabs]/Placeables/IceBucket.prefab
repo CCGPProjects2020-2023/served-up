@@ -3846,8 +3846,13 @@ MonoBehaviour:
   item: {fileID: 0}
   selectedCounterVisual: {fileID: 3819245925808000960}
   itemSO: {fileID: 11400000, guid: 873d398dda293bd40bcab86ea84d2646, type: 2}
-  inputItem: {fileID: 5323482738442007081, guid: ee1ef3f9c5a7fa2489e69169cd48fc41, type: 3}
-  outputItem: {fileID: 7534426609065193362, guid: de25fa00a162fa94c9d5908761a82228, type: 3}
+  eventReference:
+    Guid:
+      Data1: -2104398888
+      Data2: 1074561498
+      Data3: -780342876
+      Data4: -322800223
+    Path: event:/SFX/Ice
 --- !u!1 &8157105634073060508
 GameObject:
   m_ObjectHideFlags: 0
