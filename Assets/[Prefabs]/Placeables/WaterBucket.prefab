@@ -331,3 +331,10 @@ MonoBehaviour:
   selectedCounterVisual: {fileID: 6100246050727329363}
   inputItem: {fileID: 5323482738442007081, guid: ccefb15980a09df45844b169109dc008, type: 3}
   outputItem: {fileID: 5323482738442007081, guid: ee1ef3f9c5a7fa2489e69169cd48fc41, type: 3}
+  eventReference:
+    Guid:
+      Data1: 404580212
+      Data2: 1184550861
+      Data3: 499815857
+      Data4: -361817353
+    Path: event:/SFX/CleanCup

@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     public void OnDayCompleted()
     {
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.dayCompletedSound, transform.position);
         //choose modification - then start next day
         ModificationManager.Instance.GenerateModificationOptions();
     }

@@ -49,8 +49,6 @@ public class CustomerManager : MonoBehaviour
 
         float minRatio = Math.Min(minTableRatio, queueRatio);
 
-        Debug.Log(minRatio);
-
         AudioManager.Instance.SetTempoParameter("tempo", 1 - minRatio);
     }
     private void OnDayStarted()

@@ -202,6 +202,13 @@ MonoBehaviour:
   selectedCounterVisual: {fileID: 1392083853822557375}
   inputItem: {fileID: 5323482738442007081, guid: ee1ef3f9c5a7fa2489e69169cd48fc41, type: 3}
   outputItem: {fileID: 7411608472827437335, guid: 27ce97542617cc24f92f9576a33c9b0b, type: 3}
+  eventReference:
+    Guid:
+      Data1: -1161501241
+      Data2: 1145656139
+      Data3: 711233951
+      Data4: -1219799661
+    Path: event:/SFX/FillCup
 --- !u!1 &5118675773318407970
 GameObject:
   m_ObjectHideFlags: 0
