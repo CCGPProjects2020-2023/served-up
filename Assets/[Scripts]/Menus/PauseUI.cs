@@ -6,6 +6,9 @@ public class PauseUI : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject settingsMenu;
     public GameObject crosshair;
+    public GameObject gameOverMenu;
+
+
     public void TogglePause()
     {
         if (GameManager.Instance.isPaused)
@@ -23,8 +26,20 @@ public class PauseUI : MonoBehaviour
         }
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void GameOver()
+    {
+        gameOverMenu.SetActive(true);
+        crosshair.SetActive(false);
+        GameManager.Instance.PauseGame();
     }
 }

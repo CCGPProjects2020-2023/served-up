@@ -351,4 +351,17 @@ public class PlayerController : MonoBehaviour
     {
         rb.constraints &= ~RigidbodyConstraints.FreezePosition;
     }
+
+    private void OnEnable()
+    {
+        Events.onGameOver.AddListener(GameOver);
+    }
+    private void OnDisable()
+    {
+        Events.onGameOver.RemoveListener(GameOver);
+    }
+    public void GameOver()
+    {
+        pauseUI.GameOver();
+    }
 }

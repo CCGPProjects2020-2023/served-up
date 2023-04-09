@@ -211,7 +211,6 @@ GameObject:
   - component: {fileID: 8729104722060928959}
   - component: {fileID: 6937046067092287569}
   - component: {fileID: 207357638571965648}
-  - component: {fileID: 4517449707564685292}
   m_Layer: 3
   m_Name: Dirt Spec (3)
   m_TagString: Untagged
@@ -284,19 +283,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4517449707564685292
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5695751089192792631}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6143249452318204582
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +294,6 @@ GameObject:
   - component: {fileID: 5853335848947637182}
   - component: {fileID: 7434932313889976029}
   - component: {fileID: 2486108845539690903}
-  - component: {fileID: 2674436962682428039}
   m_Layer: 3
   m_Name: Dirt Spec (2)
   m_TagString: Untagged
@@ -381,19 +366,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2674436962682428039
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6143249452318204582}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8796234368892010847
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +377,6 @@ GameObject:
   - component: {fileID: 4733045547141237598}
   - component: {fileID: 4747340293667946306}
   - component: {fileID: 1103530943684296388}
-  - component: {fileID: 2764493508108000340}
   m_Layer: 3
   m_Name: Dirt Spec (1)
   m_TagString: Untagged
@@ -478,19 +449,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2764493508108000340
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8796234368892010847}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8893337582322317846
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +460,6 @@ GameObject:
   - component: {fileID: 3582094844403267211}
   - component: {fileID: 6952077731588982927}
   - component: {fileID: 8806591053667300420}
-  - component: {fileID: 6798518691047312462}
   m_Layer: 3
   m_Name: Dirt Spec
   m_TagString: Untagged
@@ -575,16 +532,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6798518691047312462
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8893337582322317846}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
