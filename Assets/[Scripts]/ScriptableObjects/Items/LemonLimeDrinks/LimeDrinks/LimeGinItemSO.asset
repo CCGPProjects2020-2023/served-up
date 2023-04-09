@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bec520f46d6f3c49bd9148405033ffe, type: 3}
-  m_Name: FilledCupItemSO
+  m_Name: LimeGinItemSO
   m_EditorClassIdentifier: 
-  name: FilledCup
-  icon: {fileID: 21300000, guid: d9e9b2e451bdd4141a816f6ab986f037, type: 3}
-  prefab: {fileID: 414773336319447342, guid: b85139a6e6356dc49842ec1e32131e04, type: 3}
+  name: LimeGin
+  icon: {fileID: 21300000, guid: f8bed02711e0c5e45b70d0c9fd228534, type: 3}
+  prefab: {fileID: 3131212815367857388, guid: 54ff080898d15c143a525c321c6f5abe, type: 3}
   isDestructable: 1
