@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
         input.Player.Movement.canceled += ctx => move = Vector2.zero;
         input.Player.Interact.performed += ctx => Interact();
         input.Player.Pickup.performed += ctx => Pickup();
+        input.Player.Pause.performed += ctx => pauseUI.TogglePause();
         AllowMovement();
     }
 
@@ -324,7 +325,7 @@ public class PlayerController : MonoBehaviour
             playerFootsteps.stop(STOP_MODE.IMMEDIATE);
         }
     }
-    
+
     public void PreventMovement()
     {
         rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
