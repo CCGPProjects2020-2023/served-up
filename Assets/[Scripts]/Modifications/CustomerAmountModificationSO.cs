@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName ="Modifications/Customer Amount")]
+[CreateAssetMenu(menuName = "Modifications/Customer Amount")]
 public class CustomerAmountModificationSO : ModificationSO
 {
-    public float percentageAmount;
+    [Range(0, 30)] public int increaseAmount;
     public override void Apply()
     {
-        
+        GameManager.Instance.increaseCustomerMod += increaseAmount;
     }
 }

@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public int startingCustomers;
     public int currentCustomers;
     public float customerModifier;
+    public int decreaseCustomerMod;
+    public int increaseCustomerMod;
     public int startingDay;
     public int currentDay;
 
@@ -31,6 +33,7 @@ public class GameManager : MonoBehaviour
     {
         startingDay = 10;
         currentDay = startingDay;
+        customerModifier = 1;
     }
 
     public void StartGame()
@@ -62,7 +65,26 @@ public class GameManager : MonoBehaviour
 
     private int CalculateCustomerAmount()
     {
-        return Mathf.RoundToInt((1 - customerModifier) * (0.0291f * Mathf.Pow(currentDay, 2) + 0.6917f * currentDay + 2.4615f));
+        customerModifier = (float)(Mathf.Pow(0.99f, decreaseCustomerMod) + 0.99 - Mathf.Pow(0.99f, increaseCustomerMod));
+        float baseMultiplier = 1f;
+        float courseAmount = 1.25f;
+        float dayModifier = currentDay switch
+        {
+            1 => 1.25f,
+            2 => 1.5f,
+            3 => 1.75f,
+            _ => 1 + (0.2f * (currentDay - 3)),
+        };
+        //(Day Length) / 25 * (Customer Modifier Rate) * (Day Modifier) * (player Modifier) / (Course Amount)			
+
+        return Mathf.RoundToInt(CalculateDayLength() / 25 * customerModifier * dayModifier * baseMultiplier / courseAmount);
+
+        //return Mathf.RoundToInt(customerModifier * (0.0291f * Mathf.Pow(currentDay, 2) + 0.6917f * currentDay + 2.4615f));
+    }
+
+    public float CalculateDayLength()
+    {
+        return 100 + 25 * Mathf.Floor((currentDay - 1) / 3f);
     }
     private void OnEnable()
     {

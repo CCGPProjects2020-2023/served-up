@@ -4,10 +4,11 @@ using UnityEngine;
 public class RecipeModificationSO : ModificationSO
 {
     public RecipeSO recipe;
-    [Range(0f, 0.3f)] public float customerModifier;
+    [Tooltip("Amount to decrease total customer amount when recipe is added - 1 = 1% decrease")]
+    [Range(0, 30)] public int decreaseAmount;
     public override void Apply()
     {
         OrderManager.Instance.AddRecipe(recipe);
-        GameManager.Instance.customerModifier += customerModifier;
+        GameManager.Instance.decreaseCustomerMod += decreaseAmount;
     }
 }

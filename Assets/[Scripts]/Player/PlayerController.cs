@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
 
                     if (heldItem.GetComponent<ItemSOHolder>().itemSO == cupHolder.emptyCup.GetComponent<ItemSOHolder>().itemSO)
                     {
-
+                        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.pickupSound, cupHolder.transform.position);
                         cupHolder.currentCups++;
                         cupHolder.UpdateCups();
                         Destroy(heldItem);
@@ -112,6 +112,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else if (0 < cupHolder.currentCups && !heldItem)
                 {
+                    AudioManager.Instance.PlayOneShot(FMODEvents.Instance.pickupSound, cupHolder.transform.position);
                     GameObject emptyCup = Instantiate(cupHolder.emptyCup, heldItemPos.transform);
                     emptyCup.layer = 0;
                     heldItem = emptyCup;
