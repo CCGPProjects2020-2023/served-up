@@ -41,7 +41,8 @@ public class GameManager : MonoBehaviour
     {
         FindObjectOfType<PlayerController>(true).gameObject.SetActive(true);
         currentCustomers = CalculateCustomerAmount();
-        Events.onDayStarted.Invoke();
+        //Events.onDayStarted.Invoke();
+        OnDayCompleted();
     }
 
     public void OnDayCompleted()
@@ -61,7 +62,8 @@ public class GameManager : MonoBehaviour
     {
         currentDay++;
         currentCustomers = CalculateCustomerAmount();
-        Events.onDayStarted.Invoke();
+        OnDayCompleted();
+        //Events.onDayStarted.Invoke();
     }
 
     private int CalculateCustomerAmount()

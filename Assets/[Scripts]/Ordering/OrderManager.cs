@@ -8,6 +8,10 @@ public class OrderManager : MonoBehaviour
     public List<ItemSO> ingredientList;
 
     public List<RecipeListSO> recipeList;
+
+    public List<ItemSO> icedDrinks;
+
+    public ItemSO iceBucket;
     public static OrderManager Instance { get; private set; }
     private void Awake()
     {
@@ -45,8 +49,14 @@ public class OrderManager : MonoBehaviour
         {
             orderList.Add(recipe.baseRecipe.output);
             foreach (RecipeSO variation in recipe.variations)
-                if (ingredientList.Contains(variation.input1) || ingredientList.Contains(variation.input2))
+            {
+                if (icedDrinks.Contains(variation.output) && !ingredientList.Contains(iceBucket))
+                {
+                    Debug.Log(variation.output.name);
+                }
+                else if (ingredientList.Contains(variation.input1) || ingredientList.Contains(variation.input2))
                     orderList.Add(variation.output);
+            }
         }
     }
 }
