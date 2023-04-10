@@ -41,8 +41,7 @@ public class GameManager : MonoBehaviour
     {
         FindObjectOfType<PlayerController>(true).gameObject.SetActive(true);
         currentCustomers = CalculateCustomerAmount();
-        //Events.onDayStarted.Invoke();
-        OnDayCompleted();
+        Events.onDayStarted.Invoke();
     }
 
     public void OnDayCompleted()
@@ -54,7 +53,6 @@ public class GameManager : MonoBehaviour
 
     public void EndDay()
     {
-        //do end of day stuff -- fade out or whatever
         StartNewDay();
     }
 
@@ -62,8 +60,7 @@ public class GameManager : MonoBehaviour
     {
         currentDay++;
         currentCustomers = CalculateCustomerAmount();
-        OnDayCompleted();
-        //Events.onDayStarted.Invoke();
+        Events.onDayStarted.Invoke();
     }
 
     private int CalculateCustomerAmount()
