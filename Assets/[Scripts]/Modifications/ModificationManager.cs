@@ -85,6 +85,7 @@ public class ModificationManager : MonoBehaviour
 
             chosenMod.Apply();
             enabledModifications.Add(chosenMod);
+            Events.onModificationAdded.Invoke(chosenMod);
         }
         ResetBoard();
         button.SetActive(false);

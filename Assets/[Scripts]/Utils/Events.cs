@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System;
+using UnityEngine;
 
 public static class Events
 {
@@ -13,7 +11,8 @@ public static class Events
     public static readonly Evt onGameOver = new Evt();
     public static readonly Evt<GameObject> onObjectSelectedChanged = new Evt<GameObject>();
     public static readonly Evt<Table> onCustomerReachedTable = new Evt<Table>();
-    public static readonly Evt<Table,TableState> onTableStateChanged = new Evt<Table, TableState>();
+    public static readonly Evt<Table, TableState> onTableStateChanged = new Evt<Table, TableState>();
+    public static readonly Evt<ModificationSO> onModificationAdded = new Evt<ModificationSO>();
 }
 
 public class Evt
@@ -56,7 +55,7 @@ public class Evt<T>
     }
 }
 
-public class Evt<T,T2>
+public class Evt<T, T2>
 {
     private event Action<T, T2> action = delegate { };
 
@@ -65,12 +64,12 @@ public class Evt<T,T2>
         action.Invoke(param, param2);
     }
 
-    public void AddListener(Action<T,T2> listener)
+    public void AddListener(Action<T, T2> listener)
     {
         action += listener;
     }
 
-    public void RemoveListener(Action<T,T2> listener)
+    public void RemoveListener(Action<T, T2> listener)
     {
         action -= listener;
     }
