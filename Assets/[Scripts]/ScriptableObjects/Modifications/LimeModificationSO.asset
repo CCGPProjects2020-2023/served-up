@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01363b8bb1d71c4fbdce7728ecb5271, type: 3}
   m_Name: LimeModificationSO
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 7139c81fc4ac7394b8d04b00b9da6d0d, type: 3}
+  icon: {fileID: 21300000, guid: e2358bd106315b34d84f62d994a5b396, type: 3}
   title: Lime
   description: Adds lime as a possible order modifier
   positives:

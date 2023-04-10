@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01363b8bb1d71c4fbdce7728ecb5271, type: 3}
   m_Name: LemonModificationSO
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: d00f9ecfafc67804a9a4c0ba7ec46ef6, type: 3}
+  icon: {fileID: 21300000, guid: aaa620fa00ab3c94dbd363f0e5772d2c, type: 3}
   title: Lemon
   description: Adds lemon as a possible order modifier
   positives:
