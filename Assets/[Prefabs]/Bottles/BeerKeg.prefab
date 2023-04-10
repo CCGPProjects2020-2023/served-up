@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3577188906270698175}
   - component: {fileID: 3567404700590755583}
   - component: {fileID: 3546192392087036195}
-  - component: {fileID: 919038564487565670}
+  - component: {fileID: 4011098568230024333}
   m_Layer: 3
   m_Name: BeerKeg
   m_TagString: Untagged
@@ -185,7 +185,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43267929025862752, guid: 1cb91b3841210914097abd9a57d25f93, type: 2}
---- !u!114 &919038564487565670
+--- !u!114 &4011098568230024333
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,14 +194,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3591062007993282541}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90204e101fb12d442a45efdfa2d4de63, type: 3}
+  m_Script: {fileID: 11500000, guid: eddf1a22b3c86674ba001aca176d097a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemPos: {fileID: 7577926190486292377}
   item: {fileID: 0}
   selectedCounterVisual: {fileID: 1392083853822557375}
-  inputItem: {fileID: 5323482738442007081, guid: ee1ef3f9c5a7fa2489e69169cd48fc41, type: 3}
-  outputItem: {fileID: 7411608472827437335, guid: 27ce97542617cc24f92f9576a33c9b0b, type: 3}
+  itemSO: {fileID: 11400000, guid: bcc358475bcb0594f8b5edcbdbc4c6a6, type: 2}
   eventReference:
     Guid:
       Data1: -1161501241

@@ -8,9 +8,9 @@ public class PlayerLook : MonoBehaviour
 
     private float xRotation, yRotation;
 
-    public float xSensitivity = 30f;
+    public static float xSensitivity = 30f;
 
-    public float ySensitivity = 30f;
+    public static float ySensitivity = 30f;
 
     void Start()
     {
@@ -18,6 +18,7 @@ public class PlayerLook : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         yRotation = 134.392f;
+        UpdateSensitivity();
     }
 
 
@@ -40,5 +41,12 @@ public class PlayerLook : MonoBehaviour
 
         camera.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+    }
+
+    public static void UpdateSensitivity()
+    {
+        int sens = PlayerPrefs.GetInt("Sensitivity", 20);
+        xSensitivity = sens;
+        ySensitivity = sens;
     }
 }
