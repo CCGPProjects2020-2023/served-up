@@ -1,13 +1,13 @@
-
+#if UNITY_EDITOR
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-    public enum ImageFilterMode {
-        Nearest = 0,
-        Bilinear = 1,
-        Average = 2
-    }
+public enum ImageFilterMode
+{
+    Nearest = 0,
+    Bilinear = 1,
+    Average = 2
+}
 public class ScreenshotHandler : MonoBehaviour
 {
     private static ScreenshotHandler instance;
@@ -15,7 +15,8 @@ public class ScreenshotHandler : MonoBehaviour
     private bool takeScreenshotOnNextFrame;
     public string iconName;
     IngredientScreenShotGen generator;
-    private void Awake() {
+    private void Awake()
+    {
         instance = this;
         myCamera = gameObject.GetComponent<Camera>();
         generator = FindObjectOfType<IngredientScreenShotGen>();
@@ -24,7 +25,7 @@ public class ScreenshotHandler : MonoBehaviour
     public IEnumerator OnPostRender()
     {
         yield return new WaitForEndOfFrame();
-        if(takeScreenshotOnNextFrame)
+        if (takeScreenshotOnNextFrame)
         {
             takeScreenshotOnNextFrame = false;
             RenderTexture renderTexture = myCamera.targetTexture;
@@ -32,14 +33,14 @@ public class ScreenshotHandler : MonoBehaviour
             Texture2D renderResult = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.RGBA32, false);
 
             //used to be 0,0 for bottom left corner, moving it to get center of screen, should have probably just made the screen size 512 by 512
-            Rect rect = new Rect((1920-renderTexture.width)/2, (1080-renderTexture.height)/2, renderTexture.width, renderTexture.height);
+            Rect rect = new Rect((1920 - renderTexture.width) / 2, (1080 - renderTexture.height) / 2, renderTexture.width, renderTexture.height);
             renderResult.ReadPixels(rect, 0, 0);
-            
+
             #region yoinked from battledrake https://www.youtube.com/watch?v=ZXYyX80F6CU
             Color[] pixels = renderResult.GetPixels(0, 0, renderTexture.width, renderTexture.height);
             for (int i = 0; i < pixels.Length; i++)
             {
-                if (pixels[i] == Color.black) 
+                if (pixels[i] == Color.black)
                 {
                     pixels[i] = Color.clear;
                 }
@@ -51,13 +52,14 @@ public class ScreenshotHandler : MonoBehaviour
             #endregion
 
             byte[] byteArray = renderResult.EncodeToPNG();
-            System.IO.File.WriteAllBytes(generator.GetFileName()+".png", byteArray);
+            System.IO.File.WriteAllBytes(generator.GetFileName() + ".png", byteArray);
             RenderTexture.ReleaseTemporary(renderTexture);
             myCamera.targetTexture = null;
-            Debug.Log(generator.GetFileName()+".png created");
+            Debug.Log(generator.GetFileName() + ".png created");
         }
     }
-    private void TakeScreenshot(int width, int height){
+    private void TakeScreenshot(int width, int height)
+    {
         myCamera.targetTexture = RenderTexture.GetTemporary(width, height, 32);
         takeScreenshotOnNextFrame = true;
         StartCoroutine(OnPostRender());
@@ -66,7 +68,7 @@ public class ScreenshotHandler : MonoBehaviour
     {
         instance.TakeScreenshot(width, height);
     }
-    public Texture2D ResizeTexture(Texture2D originalTexture, ImageFilterMode filterMode, int newWidth, int newHeight) 
+    public Texture2D ResizeTexture(Texture2D originalTexture, ImageFilterMode filterMode, int newWidth, int newHeight)
     {
         //*** Get All the source pixels
         Color[] sourceColor = originalTexture.GetPixels(0);
@@ -86,7 +88,8 @@ public class ScreenshotHandler : MonoBehaviour
 
         //*** Loop through destination pixels and process
         Vector2 center = new Vector2();
-        for (int i = 0; i < aColor.Length; i++) {
+        for (int i = 0; i < aColor.Length; i++)
+        {
 
             //*** Figure out x&y
             float x = (float)i % textureWidth;
@@ -98,7 +101,8 @@ public class ScreenshotHandler : MonoBehaviour
 
             //*** Do Based on mode
             //*** Nearest neighbour (testing)
-            if (filterMode == ImageFilterMode.Nearest) {
+            if (filterMode == ImageFilterMode.Nearest)
+            {
 
                 //*** Nearest neighbour (testing)
                 center.x = Mathf.Round(center.x);
@@ -112,7 +116,8 @@ public class ScreenshotHandler : MonoBehaviour
             }
 
             //*** Bilinear
-            else if (filterMode == ImageFilterMode.Bilinear) {
+            else if (filterMode == ImageFilterMode.Bilinear)
+            {
 
                 //*** Get Ratios
                 float ratioX = center.x - Mathf.Floor(center.x);
@@ -133,7 +138,8 @@ public class ScreenshotHandler : MonoBehaviour
             }
 
             //*** Average
-            else if (filterMode == ImageFilterMode.Average) {
+            else if (filterMode == ImageFilterMode.Average)
+            {
 
                 //*** Calculate grid around point
                 int xFrom = (int)Mathf.Max(Mathf.Floor(center.x - (pixelSize.x * 0.5f)), 0);
@@ -144,8 +150,10 @@ public class ScreenshotHandler : MonoBehaviour
                 //*** Loop and accumulate
                 Color tempColor = new Color();
                 float xGridCount = 0;
-                for (int iy = yFrom; iy < yTo; iy++) {
-                    for (int ix = xFrom; ix < xTo; ix++) {
+                for (int iy = yFrom; iy < yTo; iy++)
+                {
+                    for (int ix = xFrom; ix < xTo; ix++)
+                    {
 
                         //*** Get Color
                         tempColor += sourceColor[(int)(((float)iy * sourceSize.x) + ix)];
@@ -166,5 +174,6 @@ public class ScreenshotHandler : MonoBehaviour
 
         //*** Return
         return newTexture;
+    }
 }
-}
+#endif

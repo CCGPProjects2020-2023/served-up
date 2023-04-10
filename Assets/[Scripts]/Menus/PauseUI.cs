@@ -5,6 +5,7 @@ public class PauseUI : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject settingsMenu;
+    public GameObject recipeMenu;
     public GameObject crosshair;
     public GameObject gameOverMenu;
 
@@ -13,6 +14,7 @@ public class PauseUI : MonoBehaviour
     {
         if (GameManager.Instance.isPaused)
         {
+            recipeMenu.SetActive(false);
             settingsMenu.SetActive(false);
             pauseMenu.SetActive(false);
             crosshair.SetActive(true);
