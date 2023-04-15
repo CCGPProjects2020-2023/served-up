@@ -203,13 +203,36 @@ public class PlayerController : MonoBehaviour
                 //item placed on placeable
                 if (!placeable.item && heldItem)
                 {
-                    AudioManager.Instance.PlayOneShot(FMODEvents.Instance.pickupSound, placeable.transform.position);
-                    placeable.item = heldItem;
-                    placeable.item.transform.SetParent(placeable.itemPos.transform, true);
-                    placeable.item.transform.localPosition = Vector3.zero;
-                    placeable.item.transform.localRotation = Quaternion.identity;
-                    placeable.item.layer = 3;
-                    heldItem = null;
+                    //placeable is table
+                    if (placeable.GetComponent<Table>())
+                    {
+                        Table table = placeable.GetComponent<Table>();
+                        //if not doing drinking animation
+                        if (table.canPlaceItem == true)
+                        {
+                            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.pickupSound, placeable.transform.position);
+                            placeable.item = heldItem;
+                            placeable.item.transform.SetParent(placeable.itemPos.transform, true);
+                            placeable.item.transform.localPosition = Vector3.zero;
+                            placeable.item.transform.localRotation = Quaternion.identity;
+                            placeable.item.layer = 3;
+                            heldItem = null;
+                        }
+
+                        
+                    }
+                    //is not a table
+                    else
+                    {
+                        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.pickupSound, placeable.transform.position);
+                        placeable.item = heldItem;
+                        placeable.item.transform.SetParent(placeable.itemPos.transform, true);
+                        placeable.item.transform.localPosition = Vector3.zero;
+                        placeable.item.transform.localRotation = Quaternion.identity;
+                        placeable.item.layer = 3;
+                        heldItem = null;
+                    }
+                    
                 }
                 //item picked up from placeable
                 else if (placeable.item && !heldItem)

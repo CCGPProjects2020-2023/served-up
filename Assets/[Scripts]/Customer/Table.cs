@@ -14,15 +14,18 @@ public class Table : Placeable
     public TableState currentState;
     public float currentTimer;
     public float timer;
+    public bool canPlaceItem;
 
     private void Start()
     {
+        canPlaceItem = true;
         currentState = TableState.None;
     }
     private void Update()
     {
         if (item && item.GetComponent<ItemSOHolder>().itemSO == order)
         {
+            canPlaceItem=false;
             tempItem = item;
             tempItem.layer = 0;
             item = null;
@@ -33,6 +36,7 @@ public class Table : Placeable
     }
     private void OrderComplete()
     {
+        canPlaceItem = true;
         AudioManager.Instance.PlayOneShot(FMODEvents.Instance.orderCompleteSound, transform.position);
         Destroy(tempItem);
         tempItem = null;
